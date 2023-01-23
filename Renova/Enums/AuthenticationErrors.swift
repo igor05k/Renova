@@ -7,13 +7,14 @@
 
 import Foundation
 
-enum LoginErrors: LocalizedError {
+enum AuthenticationErrors: LocalizedError {
     case noInput
     case emptyEmail
     case invalidEmail
     case emptyPassword
     case invalidPasswordFormattation
     case wrongPassword
+    case passwordsDoNotMatch
     
     var errorDescription: String? {
         switch self {
@@ -29,6 +30,8 @@ enum LoginErrors: LocalizedError {
             return "Senha não cumpre os requisitos mínimos"
         case .wrongPassword:
             return "Senha inválida ou o usuário não tem uma senha"
+        case .passwordsDoNotMatch:
+            return "As senhas devem ser iguais"
         }
     }
 }

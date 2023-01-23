@@ -19,11 +19,11 @@ struct LoginViewModel {
         func checkEmail() throws -> String {
             do {
                 if email.isEmpty {
-                    throw LoginErrors.emptyEmail
+                    throw AuthenticationErrors.emptyEmail
                 }
                 
                 if !email.contains("@") || !email.contains(".") {
-                    throw LoginErrors.invalidEmail
+                    throw AuthenticationErrors.invalidEmail
                 }
             } catch {
                 onPasswordWrong?(error)
@@ -35,11 +35,11 @@ struct LoginViewModel {
         func checkPassword() throws -> String {
             do {
                 if password.isEmpty {
-                    throw LoginErrors.emptyPassword
+                    throw AuthenticationErrors.emptyPassword
                 }
                 
                 if !RegExp.checkPasswordComplexity(password: password, length: 8, patternsToEscape: [], caseSensitivty: true, numericDigits: true, specialCharacter: true) {
-                    throw LoginErrors.invalidPasswordFormattation
+                    throw AuthenticationErrors.invalidPasswordFormattation
                 }
             } catch {
                 onPasswordWrong?(error)
@@ -70,7 +70,7 @@ struct LoginViewModel {
             // we need to handle this case inside the signIn method by firebase
             if error != nil {
                 do {
-                    throw LoginErrors.wrongPassword
+                    throw AuthenticationErrors.wrongPassword
                 } catch {
                     onPasswordWrong?(error)
                 }

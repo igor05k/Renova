@@ -42,8 +42,16 @@ class RegisterViewController: UIViewController {
     }
     
     func setupBindings() {
-        viewModel.showInvalidPasswordAlertError = {
-            Alert.showDefaultAlert(title: "Atenção", message: "Senha inválida. Por favor, verifique novamente", vc: self)
+        viewModel.onRegistrationFailed = { error in
+            Alert.showDefaultAlert(title: "Atenção", message: error.localizedDescription, vc: self)
+        }
+        
+        viewModel.emailAlreadyInUse = { error in
+            Alert.showDefaultAlert(title: "Atenção", message: "Esse email já está sendo utilizado", vc: self)
+        }
+        
+        viewModel.unexpectedError = { error in
+            Alert.showDefaultAlert(title: "Atenção", message: "Algo deu errado enquanto sua conta era criada", vc: self)
         }
     }
     
