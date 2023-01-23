@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82136B4C297DCFFD00EAF1E0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B4B297DCFFD00EAF1E0 /* LoginViewController.swift */; };
+		82136B4F297DD06400EAF1E0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B4E297DD06400EAF1E0 /* LoginView.swift */; };
+		82136B52297DD38700EAF1E0 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B51297DD38700EAF1E0 /* UIColor+.swift */; };
+		82136B58297DDC1800EAF1E0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B57297DDC1800EAF1E0 /* RegisterViewController.swift */; };
+		82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B59297DDC2C00EAF1E0 /* RegisterView.swift */; };
+		82136B5E297E0B0500EAF1E0 /* RegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */; };
+		82136B5F297E0B0500EAF1E0 /* RegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */; };
+		82136B6D297E121200EAF1E0 /* SignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B6B297E121100EAF1E0 /* SignUpTableViewCell.swift */; };
+		82136B6E297E121200EAF1E0 /* SignUpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82136B6C297E121100EAF1E0 /* SignUpTableViewCell.xib */; };
+		8282C433297E168100E0B4EF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C432297E168100E0B4EF /* RegisterViewModel.swift */; };
+		8282C436297E181F00E0B4EF /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C435297E181F00E0B4EF /* Forms.swift */; };
 		82E5A9F9297DC44500F249A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5A9F8297DC44500F249A9 /* AppDelegate.swift */; };
 		82E5A9FB297DC44500F249A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5A9FA297DC44500F249A9 /* SceneDelegate.swift */; };
-		82E5A9FD297DC44500F249A9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5A9FC297DC44500F249A9 /* ViewController.swift */; };
 		82E5AA02297DC44800F249A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E5AA01297DC44800F249A9 /* Assets.xcassets */; };
 		82E5AA05297DC44800F249A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82E5AA03297DC44800F249A9 /* LaunchScreen.storyboard */; };
 		82E5AA0E297DC94B00F249A9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 82E5AA0D297DC94B00F249A9 /* FirebaseAuth */; };
@@ -17,10 +27,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82136B4B297DCFFD00EAF1E0 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		82136B4E297DD06400EAF1E0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		82136B51297DD38700EAF1E0 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		82136B57297DDC1800EAF1E0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		82136B59297DDC2C00EAF1E0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewCell.swift; sourceTree = "<group>"; };
+		82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterTableViewCell.xib; sourceTree = "<group>"; };
+		82136B6B297E121100EAF1E0 /* SignUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTableViewCell.swift; sourceTree = "<group>"; };
+		82136B6C297E121100EAF1E0 /* SignUpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpTableViewCell.xib; sourceTree = "<group>"; };
+		8282C432297E168100E0B4EF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		8282C435297E181F00E0B4EF /* Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forms.swift; sourceTree = "<group>"; };
 		82E5A9F5297DC44500F249A9 /* Renova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E5A9F8297DC44500F249A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E5A9FA297DC44500F249A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		82E5A9FC297DC44500F249A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82E5AA01297DC44800F249A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82E5AA04297DC44800F249A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82E5AA06297DC44900F249A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,6 +59,84 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82136B50297DD37800EAF1E0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				82136B51297DD38700EAF1E0 /* UIColor+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		82136B53297DDAEC00EAF1E0 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				82136B5B297E0AE600EAF1E0 /* TableViewCell */,
+				82136B55297DDAF400EAF1E0 /* RegisterView */,
+				82136B54297DDAEF00EAF1E0 /* RegisterViewController */,
+				82136B56297DDB0400EAF1E0 /* RegisterViewModel */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		82136B54297DDAEF00EAF1E0 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				82136B57297DDC1800EAF1E0 /* RegisterViewController.swift */,
+			);
+			path = RegisterViewController;
+			sourceTree = "<group>";
+		};
+		82136B55297DDAF400EAF1E0 /* RegisterView */ = {
+			isa = PBXGroup;
+			children = (
+				82136B59297DDC2C00EAF1E0 /* RegisterView.swift */,
+			);
+			path = RegisterView;
+			sourceTree = "<group>";
+		};
+		82136B56297DDB0400EAF1E0 /* RegisterViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8282C432297E168100E0B4EF /* RegisterViewModel.swift */,
+			);
+			path = RegisterViewModel;
+			sourceTree = "<group>";
+		};
+		82136B5B297E0AE600EAF1E0 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				82136B6A297E120000EAF1E0 /* SignUpCell */,
+				82136B60297E117900EAF1E0 /* RegisterCell */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		82136B60297E117900EAF1E0 /* RegisterCell */ = {
+			isa = PBXGroup;
+			children = (
+				82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */,
+				82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */,
+			);
+			path = RegisterCell;
+			sourceTree = "<group>";
+		};
+		82136B6A297E120000EAF1E0 /* SignUpCell */ = {
+			isa = PBXGroup;
+			children = (
+				82136B6B297E121100EAF1E0 /* SignUpTableViewCell.swift */,
+				82136B6C297E121100EAF1E0 /* SignUpTableViewCell.xib */,
+			);
+			path = SignUpCell;
+			sourceTree = "<group>";
+		};
+		8282C434297E180D00E0B4EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8282C435297E181F00E0B4EF /* Forms.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		82E5A9EC297DC44500F249A9 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +156,66 @@
 		82E5A9F7297DC44500F249A9 /* Renova */ = {
 			isa = PBXGroup;
 			children = (
-				82E5A9F8297DC44500F249A9 /* AppDelegate.swift */,
-				82E5A9FA297DC44500F249A9 /* SceneDelegate.swift */,
-				82E5A9FC297DC44500F249A9 /* ViewController.swift */,
-				82E5AA01297DC44800F249A9 /* Assets.xcassets */,
-				82E5AA03297DC44800F249A9 /* LaunchScreen.storyboard */,
+				8282C434297E180D00E0B4EF /* Model */,
+				82136B50297DD37800EAF1E0 /* Extensions */,
+				82E5AA12297DCEAE00F249A9 /* Resources */,
+				82E5AA11297DCE5A00F249A9 /* Controllers */,
 				82E5AA06297DC44900F249A9 /* Info.plist */,
 			);
 			path = Renova;
+			sourceTree = "<group>";
+		};
+		82E5AA11297DCE5A00F249A9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				82136B53297DDAEC00EAF1E0 /* Register */,
+				82E5AA13297DCEE500F249A9 /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		82E5AA12297DCEAE00F249A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				82E5AA01297DC44800F249A9 /* Assets.xcassets */,
+				82E5AA03297DC44800F249A9 /* LaunchScreen.storyboard */,
+				82E5A9F8297DC44500F249A9 /* AppDelegate.swift */,
+				82E5A9FA297DC44500F249A9 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		82E5AA13297DCEE500F249A9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				82E5AA15297DCEF200F249A9 /* LoginView */,
+				82E5AA16297DCF0500F249A9 /* LoginViewController */,
+				82E5AA14297DCEEB00F249A9 /* LoginViewModel */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		82E5AA14297DCEEB00F249A9 /* LoginViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginViewModel;
+			sourceTree = "<group>";
+		};
+		82E5AA15297DCEF200F249A9 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				82136B4E297DD06400EAF1E0 /* LoginView.swift */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		82E5AA16297DCF0500F249A9 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				82136B4B297DCFFD00EAF1E0 /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +284,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E5AA05297DC44800F249A9 /* LaunchScreen.storyboard in Resources */,
+				82136B6E297E121200EAF1E0 /* SignUpTableViewCell.xib in Resources */,
+				82136B5F297E0B0500EAF1E0 /* RegisterTableViewCell.xib in Resources */,
 				82E5AA02297DC44800F249A9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,9 +297,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82E5A9FD297DC44500F249A9 /* ViewController.swift in Sources */,
+				82136B6D297E121200EAF1E0 /* SignUpTableViewCell.swift in Sources */,
+				8282C433297E168100E0B4EF /* RegisterViewModel.swift in Sources */,
+				82136B4C297DCFFD00EAF1E0 /* LoginViewController.swift in Sources */,
 				82E5A9F9297DC44500F249A9 /* AppDelegate.swift in Sources */,
+				82136B4F297DD06400EAF1E0 /* LoginView.swift in Sources */,
+				82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */,
+				8282C436297E181F00E0B4EF /* Forms.swift in Sources */,
+				82136B58297DDC1800EAF1E0 /* RegisterViewController.swift in Sources */,
 				82E5A9FB297DC44500F249A9 /* SceneDelegate.swift in Sources */,
+				82136B5E297E0B0500EAF1E0 /* RegisterTableViewCell.swift in Sources */,
+				82136B52297DD38700EAF1E0 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
