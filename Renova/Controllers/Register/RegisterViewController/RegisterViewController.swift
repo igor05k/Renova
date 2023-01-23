@@ -17,6 +17,14 @@ class RegisterViewController: UIViewController {
         return table
     }()
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configTableView()
+        tableViewConstraints()
+        setupBindings()
+    }
+    
     override func loadView() {
         screen = RegisterView()
         view = screen
@@ -33,10 +41,10 @@ class RegisterViewController: UIViewController {
         ])
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configTableView()
-        tableViewConstraints()
+    func setupBindings() {
+        viewModel.showInvalidPasswordAlertError = {
+            Alert.showDefaultAlert(title: "Atenção", message: "Senha inválida. Por favor, verifique novamente", vc: self)
+        }
     }
     
     func configTableView() {
@@ -50,6 +58,9 @@ class RegisterViewController: UIViewController {
 extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RegisterTableViewCell.identifier, for: indexPath) as? RegisterTableViewCell else { return UITableViewCell() }
+        cell.didTapCreateAccount = { [weak self] name, email, password, passwordConfirm in
+            self?.viewModel.createAccount(name, email, password, passwordConfirm)
+        }
         return cell
     }
     

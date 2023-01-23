@@ -18,6 +18,9 @@
 		8282C436297E181F00E0B4EF /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C435297E181F00E0B4EF /* Forms.swift */; };
 		8282C43B297EC65800E0B4EF /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C439297EC65800E0B4EF /* LoginTableViewCell.swift */; };
 		8282C43C297EC65800E0B4EF /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8282C43A297EC65800E0B4EF /* LoginTableViewCell.xib */; };
+		8282C43E297EDACF00E0B4EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8282C43D297EDACE00E0B4EF /* GoogleService-Info.plist */; };
+		8282C441297EDB9700E0B4EF /* RegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C440297EDB9700E0B4EF /* RegEx.swift */; };
+		8282C443297EDDD900E0B4EF /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C442297EDDD900E0B4EF /* Alert.swift */; };
 		82E5A9F9297DC44500F249A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5A9F8297DC44500F249A9 /* AppDelegate.swift */; };
 		82E5A9FB297DC44500F249A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5A9FA297DC44500F249A9 /* SceneDelegate.swift */; };
 		82E5AA02297DC44800F249A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E5AA01297DC44800F249A9 /* Assets.xcassets */; };
@@ -38,6 +41,9 @@
 		8282C435297E181F00E0B4EF /* Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forms.swift; sourceTree = "<group>"; };
 		8282C439297EC65800E0B4EF /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
 		8282C43A297EC65800E0B4EF /* LoginTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginTableViewCell.xib; sourceTree = "<group>"; };
+		8282C43D297EDACE00E0B4EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8282C440297EDB9700E0B4EF /* RegEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegEx.swift; sourceTree = "<group>"; };
+		8282C442297EDDD900E0B4EF /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		82E5A9F5297DC44500F249A9 /* Renova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E5A9F8297DC44500F249A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E5A9FA297DC44500F249A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +150,15 @@
 			path = LoginCell;
 			sourceTree = "<group>";
 		};
+		8282C43F297EDB8A00E0B4EF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8282C440297EDB9700E0B4EF /* RegEx.swift */,
+				8282C442297EDDD900E0B4EF /* Alert.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		82E5A9EC297DC44500F249A9 = {
 			isa = PBXGroup;
 			children = (
@@ -163,11 +178,13 @@
 		82E5A9F7297DC44500F249A9 /* Renova */ = {
 			isa = PBXGroup;
 			children = (
-				8282C434297E180D00E0B4EF /* Model */,
-				82136B50297DD37800EAF1E0 /* Extensions */,
-				82E5AA12297DCEAE00F249A9 /* Resources */,
 				82E5AA11297DCE5A00F249A9 /* Controllers */,
+				82136B50297DD37800EAF1E0 /* Extensions */,
+				8282C43D297EDACE00E0B4EF /* GoogleService-Info.plist */,
 				82E5AA06297DC44900F249A9 /* Info.plist */,
+				8282C434297E180D00E0B4EF /* Model */,
+				82E5AA12297DCEAE00F249A9 /* Resources */,
+				8282C43F297EDB8A00E0B4EF /* Utils */,
 			);
 			path = Renova;
 			sourceTree = "<group>";
@@ -293,6 +310,7 @@
 			files = (
 				82E5AA05297DC44800F249A9 /* LaunchScreen.storyboard in Resources */,
 				8282C43C297EC65800E0B4EF /* LoginTableViewCell.xib in Resources */,
+				8282C43E297EDACF00E0B4EF /* GoogleService-Info.plist in Resources */,
 				82136B5F297E0B0500EAF1E0 /* RegisterTableViewCell.xib in Resources */,
 				82E5AA02297DC44800F249A9 /* Assets.xcassets in Resources */,
 			);
@@ -310,10 +328,12 @@
 				82E5A9F9297DC44500F249A9 /* AppDelegate.swift in Sources */,
 				82136B4F297DD06400EAF1E0 /* LoginView.swift in Sources */,
 				82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */,
+				8282C443297EDDD900E0B4EF /* Alert.swift in Sources */,
 				8282C436297E181F00E0B4EF /* Forms.swift in Sources */,
 				82136B58297DDC1800EAF1E0 /* RegisterViewController.swift in Sources */,
 				82E5A9FB297DC44500F249A9 /* SceneDelegate.swift in Sources */,
 				82136B5E297E0B0500EAF1E0 /* RegisterTableViewCell.swift in Sources */,
+				8282C441297EDB9700E0B4EF /* RegEx.swift in Sources */,
 				82136B52297DD38700EAF1E0 /* UIColor+.swift in Sources */,
 				8282C43B297EC65800E0B4EF /* LoginTableViewCell.swift in Sources */,
 			);

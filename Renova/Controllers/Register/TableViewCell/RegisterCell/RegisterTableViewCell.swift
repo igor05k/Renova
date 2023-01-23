@@ -8,6 +8,7 @@
 import UIKit
 
 class RegisterTableViewCell: UITableViewCell {
+    var didTapCreateAccount: ((_ name: String, _ email: String, _ password: String, _ passwordConfirmation: String) -> Void)?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -34,7 +35,12 @@ class RegisterTableViewCell: UITableViewCell {
     }
     
     @IBAction func signUpTapped(_ sender: UIButton) {
-        print("tapped")
+        if let name = nameTextField.text,
+           let email = emailTextField.text,
+           let password = passwordTextField.text,
+           let passwordConfirm = passwordConfirmationTextField.text {
+            didTapCreateAccount?(name, email, password, passwordConfirm)
+        }
     }
     
     func configCell() {
@@ -50,6 +56,6 @@ class RegisterTableViewCell: UITableViewCell {
         passwordConfirmationLabel.text = "Confirmação de senha"
         passwordConfirmationTextField.placeholder = "Confirme sua senha..."
         
-        signUpButton.setTitle("Registrar", for: .normal)
+        signUpButton.setTitle("Criar conta", for: .normal)
     }
 }
