@@ -22,47 +22,39 @@ class RegisterViewController: UIViewController {
         view = screen
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+    func tableViewConstraints() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        viewModel.configForms()
+        tableViewConstraints()
     }
     
     func configTableView() {
-        view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(RegisterTableViewCell.nib(), forCellReuseIdentifier: RegisterTableViewCell.identifier)
-        tableView.register(SignUpTableViewCell.nib(), forCellReuseIdentifier: SignUpTableViewCell.identifier)
     }
 }
 
 extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: RegisterTableViewCell.identifier, for: indexPath) as? RegisterTableViewCell else { return UITableViewCell() }
-            cell.setup(form: viewModel.dequeueForm(at: indexPath.row))
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SignUpTableViewCell.identifier, for: indexPath) as? SignUpTableViewCell else { return UITableViewCell() }
-            return cell
-        default:
-            return UITableViewCell()
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RegisterTableViewCell.identifier, for: indexPath) as? RegisterTableViewCell else { return UITableViewCell() }
+        return cell
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int { 2 }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRowsInSection(section)
-    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { tableView.frame.size.height }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 100 }
 }

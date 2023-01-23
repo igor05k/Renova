@@ -11,22 +11,64 @@ class LoginViewController: UIViewController {
     
     private var screen: LoginView?
     
+    lazy var tableView: UITableView = {
+        let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        return table
+    }()
+    
     override func loadView() {
         screen = LoginView()
         view = screen
-        
-        setupBindings()
+        tableViewConstraints()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configTableView()
     }
     
-    func setupBindings() {
-        screen?.goToRegister = {
-            let registerViewController = RegisterViewController()
-            self.navigationController?.pushViewController(registerViewController, animated: true)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // adjust nav bar background color and remove 1px hairline border
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    func tableViewConstraints() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
+    
+    func configTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.register(LoginTableViewCell.nib(), forCellReuseIdentifier: LoginTableViewCell.identifier)
+    }
+    
+    func goToRegister() {
+        let registerViewController = RegisterViewController()
+        navigationController?.pushViewController(registerViewController, animated: true)
     }
 }
 
+extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: LoginTableViewCell.identifier, for: indexPath) as? LoginTableViewCell else { return UITableViewCell() }
+        cell.didTapRegisterButton = { [weak self] in
+            self?.goToRegister()
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { tableView.frame.size.height }
+}

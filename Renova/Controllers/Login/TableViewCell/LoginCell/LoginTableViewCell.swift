@@ -1,26 +1,26 @@
 //
-//  RegisterTableViewCell.swift
+//  LoginTableViewCell.swift
 //  Renova
 //
-//  Created by Igor Fernandes on 22/01/23.
+//  Created by Igor Fernandes on 23/01/23.
 //
 
 import UIKit
 
-class RegisterTableViewCell: UITableViewCell {
+class LoginTableViewCell: UITableViewCell {
+    var didTapRegisterButton: (() -> Void)?
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
+    
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordConfirmationLabel: UILabel!
-    @IBOutlet weak var passwordConfirmationTextField: UITextField!
+    
+    @IBOutlet weak var signInButton: UIButton!
     
     @IBOutlet weak var signUpButton: UIButton!
     
-    static let identifier: String = String(describing: RegisterTableViewCell.self)
+    static let identifier: String = String(describing: LoginTableViewCell.self)
     
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
@@ -33,23 +33,18 @@ class RegisterTableViewCell: UITableViewCell {
         configCell()
     }
     
-    @IBAction func signUpTapped(_ sender: UIButton) {
-        print("tapped")
+    @IBAction func registerTapped(_ sender: UIButton) {
+        didTapRegisterButton?()
     }
     
     func configCell() {
-        nameLabel.text = "Nome"
-        nameTextField.placeholder  = "Digite seu nome..."
-        
         emailLabel.text = "Email"
         emailTextField.placeholder = "Digite seu email..."
         
         passwordLabel.text = "Senha"
         passwordTextField.placeholder = "Digite sua senha..."
         
-        passwordConfirmationLabel.text = "Confirmação de senha"
-        passwordConfirmationTextField.placeholder = "Confirme sua senha..."
-        
+        signInButton.setTitle("Entrar", for: .normal)
         signUpButton.setTitle("Registrar", for: .normal)
     }
 }
