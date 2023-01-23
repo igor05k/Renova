@@ -8,6 +8,7 @@
 import UIKit
 
 class LoginTableViewCell: UITableViewCell {
+    var didTapLoginButton: ((_ email: String, _ password: String) -> Void)?
     var didTapRegisterButton: (() -> Void)?
     
     @IBOutlet weak var emailLabel: UILabel!
@@ -36,6 +37,14 @@ class LoginTableViewCell: UITableViewCell {
     @IBAction func registerTapped(_ sender: UIButton) {
         didTapRegisterButton?()
     }
+    
+    @IBAction func signInTapped(_ sender: UIButton) {
+        if let email = emailTextField.text,
+           let password = passwordTextField.text {
+            didTapLoginButton?(email, password)
+        }
+    }
+    
     
     func configCell() {
         emailLabel.text = "Email"

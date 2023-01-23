@@ -42,6 +42,9 @@
                         <rect key="frame" x="26" y="216" width="268" height="35"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                        <connections>
+                            <action selector="signInTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ojp-oJ-XN9"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYA-n2-u22">
                         <rect key="frame" x="26" y="466" width="268" height="35"/>

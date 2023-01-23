@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private var screen: LoginView?
+    private var viewModel: LoginViewModel = LoginViewModel()
     
     lazy var tableView: UITableView = {
         let table = UITableView()
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
+        setupBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +35,16 @@ class LoginViewController: UIViewController {
         // adjust nav bar background color and remove 1px hairline border
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    func setupBindings() {
+        viewModel.onPasswordWrong = { [weak self] error in
+            self?.showErrorMessage(error)
+        }
+    }
+    
+    func showErrorMessage(_ errorMessage: Error) {
+        Alert.showDefaultAlert(title: "Atenção", message: errorMessage.localizedDescription, vc: self)
     }
     
     func tableViewConstraints() {
@@ -57,6 +69,22 @@ class LoginViewController: UIViewController {
         let registerViewController = RegisterViewController()
         navigationController?.pushViewController(registerViewController, animated: true)
     }
+    
+    func goToHome() {
+        let registerViewController = HomeViewController()
+        navigationController?.pushViewController(registerViewController, animated: true)
+    }
+    
+    private func didTapLogin(_ email: String, _ password: String) {
+        viewModel.signIn(email, password) { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.goToHome()
+            case .failure(let error):
+                self?.showErrorMessage(error)
+            }
+        }
+    }
 }
 
 extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
@@ -65,6 +93,11 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
         cell.didTapRegisterButton = { [weak self] in
             self?.goToRegister()
         }
+        
+        cell.didTapLoginButton = { [weak self] email, password in
+            self?.didTapLogin(email, password)
+        }
+        
         return cell
     }
     
