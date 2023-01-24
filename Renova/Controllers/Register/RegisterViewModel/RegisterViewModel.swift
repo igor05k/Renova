@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 protocol LoadingDelegate: AnyObject {
     func manageLoading(didChangeLoadingState isLoading: Bool)
@@ -27,6 +28,8 @@ final class RegisterViewModel: RegisterViewModelProtocol {
     var unexpectedError: ((_ err: Error?) -> Void)?
     
     var showInvalidPasswordAlertError: (() -> Void)?
+    
+    private var firestore: Firestore = Firestore.firestore()
     
     weak var delegate: LoadingDelegate?
         var isLoading = false {
@@ -97,17 +100,22 @@ final class RegisterViewModel: RegisterViewModelProtocol {
         guard let password = try? checkPassword() else { return }
         
         if !email.isEmpty && !password.isEmpty && !passwordConfirmation.isEmpty && !name.isEmpty {
+            /// check if email already exists
             Auth.auth().fetchSignInMethods(forEmail: email) { [weak self] (methods, error) in
                 if let error = error {
                     self?.unexpectedError?(error)
                 } else if methods == nil {
                     // email is not in use - call signin
-                    self?.auth.createUser(withEmail: email, password: password, completion: { _, error in
+                    self?.auth.createUser(withEmail: email, password: password, completion: { result, error in
                         if error != nil {
                             self?.unexpectedError?(error)
                             self?.isLoading = false
                             completion(false)
                         } else {
+                            /// insert user into firebase firestore
+                            let name = result?.user.email ?? "no email"
+                            let emailFormatted = email.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+                            self?.firestore.collection("users").document(emailFormatted).setData(["name": "Igor"])
                             self?.isLoading = false
                             completion(true)
                         }
@@ -121,3 +129,59 @@ final class RegisterViewModel: RegisterViewModelProtocol {
         }
     }
 }
+
+/*
+ @IBAction func tappedCadastrarButton(_ sender: UIButton) {
+     
+     let email: String = textFieldEmail.text ?? ""
+     let senha: String = textFieldSenha.text ?? ""
+     
+     let confirmarSenha:String = textFieldConfirmarSenha.text ?? ""
+     
+     if senha == confirmarSenha {
+         self.auth?.createUser(withEmail: email, password: senha, completion: { [weak self] result, error in
+             if error != nil{
+                 self?.alert?.alertInformation(title: "Heads up", message: "Error registering, check the data and try again")
+             } else {
+                 
+                 let name = result?.user.email ?? "no email"
+                 let emailFormatted = email.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+                 let userRef = self?.firestore?.collection("usuarios").document(emailFormatted)
+                 
+                 userRef?.getDocument { snapshot, error in
+                     guard let snapshot else { return }
+                     if !snapshot.exists {
+                         userRef?.setData([
+                             "nome": self?.textFieldName.text ?? "user",
+                             "email": self?.textFieldEmail.text ?? "no email",
+                         ]) { error in
+                             if error != nil {
+                                 print("Error writing document: (error.localizedDescription)")
+                             } else {
+                                 print("User data successfully written to Firestore!")
+                             }
+                         }
+                     }
+                 }
+
+                 
+                 self?.alert?.alertInformation(title: "Success", message: "Successfully registered user", completion: {
+                     let homeVC: MainTabBarController? =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar") as? MainTabBarController
+                     
+                     DispatchQueue.global(qos: .userInitiated).async {
+                         // igor-gmail-com
+                         let database = Database.database().reference()
+                         let data = ["name": name, "email": email]
+                         let emailFormatted = email.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+                         database.child("users").child(emailFormatted).setValue(data)
+                     }
+                     
+                     self?.navigationController?.pushViewController(homeVC ?? UIViewController(), animated: true)
+                 })
+             }
+         })
+     } else {
+         self.alert?.alertInformation(title: "Heads up", message: "Divergent Passwords")
+     }
+ }
+ */
