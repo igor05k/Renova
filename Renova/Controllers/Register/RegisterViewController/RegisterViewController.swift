@@ -17,7 +17,6 @@ class RegisterViewController: UIViewController {
         return table
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
@@ -67,13 +66,20 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RegisterTableViewCell.identifier, for: indexPath) as? RegisterTableViewCell else { return UITableViewCell() }
         cell.didTapCreateAccount = { [weak self] name, email, password, passwordConfirm in
-            self?.viewModel.createAccount(name, email, password, passwordConfirm)
+            self?.viewModel.createAccount(name, email, password, passwordConfirm) { [weak self] success in
+                if success {
+                    let controller = MainTabBarController()
+                    self?.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
         }
+        
+        cell.configure(with: viewModel)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { tableView.frame.size.height }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { tableView.frame.size.height }   
 }

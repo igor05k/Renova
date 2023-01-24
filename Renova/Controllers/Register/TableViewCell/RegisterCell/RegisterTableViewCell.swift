@@ -26,6 +26,10 @@ class RegisterTableViewCell: UITableViewCell {
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
+    
+    func configure(with viewModel: RegisterViewModel) {
+        viewModel.delegate = self
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,6 +47,12 @@ class RegisterTableViewCell: UITableViewCell {
         }
     }
     
+    func setupButton(isLoading: Bool, title: String?, isEnabled: Bool) {
+        signUpButton.configuration?.showsActivityIndicator = isLoading
+        signUpButton.configuration?.title = title
+        signUpButton.isEnabled = isEnabled
+    }
+    
     func configCell() {
         nameLabel.text = "Nome"
         nameTextField.placeholder  = "Digite seu nome..."
@@ -57,5 +67,19 @@ class RegisterTableViewCell: UITableViewCell {
         passwordConfirmationTextField.placeholder = "Confirme sua senha..."
         
         signUpButton.setTitle("Criar conta", for: .normal)
+    }
+}
+
+extension RegisterTableViewCell: LoadingDelegate {
+    func manageLoading(didChangeLoadingState isLoading: Bool) {
+        if isLoading {
+            signUpButton.configuration?.showsActivityIndicator = true
+            signUpButton.configuration?.title = nil
+            signUpButton.isEnabled = false
+        } else {
+            signUpButton.configuration?.showsActivityIndicator = false
+            signUpButton.configuration?.title = "Criar conta"
+            signUpButton.isEnabled = true
+        }
     }
 }

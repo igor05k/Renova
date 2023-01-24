@@ -26,6 +26,10 @@ class LoginTableViewCell: UITableViewCell {
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
+    
+    func configure(with viewmodel: LoginViewModel) {
+        viewmodel.delegate = self
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,7 +49,6 @@ class LoginTableViewCell: UITableViewCell {
         }
     }
     
-    
     func configCell() {
         emailLabel.text = "Email"
         emailTextField.placeholder = "Digite seu email..."
@@ -55,5 +58,19 @@ class LoginTableViewCell: UITableViewCell {
         
         signInButton.setTitle("Entrar", for: .normal)
         signUpButton.setTitle("Registrar", for: .normal)
+    }
+}
+
+extension LoginTableViewCell: LoadingDelegate {
+    func manageLoading(didChangeLoadingState isLoading: Bool) {
+        if isLoading {
+            signInButton.configuration?.showsActivityIndicator = true
+            signInButton.configuration?.title = nil
+            signInButton.isEnabled = false
+        } else {
+            signInButton.configuration?.showsActivityIndicator = false
+            signInButton.configuration?.title = "Entrar"
+            signInButton.isEnabled = true
+        }
     }
 }

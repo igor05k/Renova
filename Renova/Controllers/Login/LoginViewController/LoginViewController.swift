@@ -71,8 +71,8 @@ class LoginViewController: UIViewController {
     }
     
     func goToHome() {
-        let registerViewController = HomeViewController()
-        navigationController?.pushViewController(registerViewController, animated: true)
+        let controller = MainTabBarController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     private func didTapLogin(_ email: String, _ password: String) {
@@ -97,6 +97,8 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
         cell.didTapLoginButton = { [weak self] email, password in
             self?.didTapLogin(email, password)
         }
+        
+        cell.configure(with: viewModel)
         
         return cell
     }

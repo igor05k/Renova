@@ -14,6 +14,7 @@
 		82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B59297DDC2C00EAF1E0 /* RegisterView.swift */; };
 		82136B5E297E0B0500EAF1E0 /* RegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */; };
 		82136B5F297E0B0500EAF1E0 /* RegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */; };
+		827707102980256A00B53595 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8277070F2980256A00B53595 /* MainTabBarController.swift */; };
 		8282C433297E168100E0B4EF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C432297E168100E0B4EF /* RegisterViewModel.swift */; };
 		8282C436297E181F00E0B4EF /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C435297E181F00E0B4EF /* Forms.swift */; };
 		8282C43B297EC65800E0B4EF /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C439297EC65800E0B4EF /* LoginTableViewCell.swift */; };
@@ -41,6 +42,7 @@
 		82136B59297DDC2C00EAF1E0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewCell.swift; sourceTree = "<group>"; };
 		82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterTableViewCell.xib; sourceTree = "<group>"; };
+		8277070F2980256A00B53595 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8282C432297E168100E0B4EF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		8282C435297E181F00E0B4EF /* Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forms.swift; sourceTree = "<group>"; };
 		8282C439297EC65800E0B4EF /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 			path = RegisterCell;
 			sourceTree = "<group>";
 		};
+		8277070E2980253D00B53595 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				8277070F2980256A00B53595 /* MainTabBarController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
 		8282C434297E180D00E0B4EF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +229,7 @@
 		82E5A9F7297DC44500F249A9 /* Renova */ = {
 			isa = PBXGroup;
 			children = (
+				8277070E2980253D00B53595 /* Tabbar */,
 				8282C44D297EFCF600E0B4EF /* Enums */,
 				82E5AA11297DCE5A00F249A9 /* Controllers */,
 				82136B50297DD37800EAF1E0 /* Extensions */,
@@ -369,6 +380,7 @@
 			files = (
 				8282C433297E168100E0B4EF /* RegisterViewModel.swift in Sources */,
 				82136B4C297DCFFD00EAF1E0 /* LoginViewController.swift in Sources */,
+				827707102980256A00B53595 /* MainTabBarController.swift in Sources */,
 				82E5A9F9297DC44500F249A9 /* AppDelegate.swift in Sources */,
 				8282C44A297EFA8900E0B4EF /* HomeView.swift in Sources */,
 				8282C44C297EFB9400E0B4EF /* LoginViewModel.swift in Sources */,

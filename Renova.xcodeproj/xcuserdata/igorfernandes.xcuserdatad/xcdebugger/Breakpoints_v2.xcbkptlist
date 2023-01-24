@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2E6B84D4-742C-4F24-B483-93F9BA7267DF"
+            uuid = "ED88DA12-E6AF-46BB-9981-E5779FADAD92"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Renova/Controllers/Register/RegisterViewModel/RegisterViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "createAccount(_:_:_:_:)"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "createAccount(_:_:_:_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
