@@ -13,15 +13,15 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .viewBackgroundColor
+        abc()
     }
     
-    override func setViewControllers(_ viewControllers: [UIViewController]?, animated: Bool) {
-        super.setViewControllers([home], animated: true)
+    func abc() {
+        setViewControllers([home], animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.hidesBackButton = true
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.navigationItem.hidesBackButton = true
+//    }
 }

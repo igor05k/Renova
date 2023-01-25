@@ -10,6 +10,8 @@ import UIKit
 class LoginTableViewCell: UITableViewCell {
     var didTapLoginButton: ((_ email: String, _ password: String) -> Void)?
     var didTapRegisterButton: (() -> Void)?
+    var didTapSignInWithGoogle: (() -> Void)?
+    
     
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,6 +22,9 @@ class LoginTableViewCell: UITableViewCell {
     @IBOutlet weak var signInButton: UIButton!
     
     @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var signInWithGoogleButton: UIButton!
+    
     
     static let identifier: String = String(describing: LoginTableViewCell.self)
     
@@ -49,12 +54,18 @@ class LoginTableViewCell: UITableViewCell {
         }
     }
     
+    @IBAction func signInWithGoogleTapped(_ sender: UIButton) {
+        didTapSignInWithGoogle?()
+    }
+    
     func configCell() {
         emailLabel.text = "Email"
         emailTextField.placeholder = "Digite seu email..."
         
         passwordLabel.text = "Senha"
         passwordTextField.placeholder = "Digite sua senha..."
+        
+        signInWithGoogleButton.setTitle("Login com o google", for: .normal)
         
         signInButton.setTitle("Entrar", for: .normal)
         signUpButton.setTitle("Registrar", for: .normal)

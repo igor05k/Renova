@@ -113,14 +113,34 @@ final class RegisterViewModel: RegisterViewModelProtocol {
                             completion(false)
                         } else {
                             /// insert user into firebase firestore
-                            let name = result?.user.email ?? "no email"
-                            let emailFormatted = email.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
-                            self?.firestore.collection("users").document(emailFormatted).setData(["name": "Igor"])
-                            self?.isLoading = false
-                            completion(true)
+                            guard let uid = result?.user.uid else { return }
+                            let userRef = self?.firestore.collection("users").document(uid)
+                            
+                            // checks if user already exist in database e.g sign up with google so it dont erase existing data
+                            userRef?.getDocument { snapshot, error in
+                                guard let snapshot else { return }
+                                if !snapshot.exists {
+                                    userRef?.setData([
+                                        "nome": name,
+                                        "email": email,
+                                    ]) { error in
+                                        if error != nil {
+                                            // error
+                                            self?.unexpectedError?(error)
+                                            completion(false)
+                                        } else {
+                                            // user succesfully inserted into database
+                                            UserId.shared.userId = uid
+                                            self?.isLoading = false
+                                            completion(true)
+                                        }
+                                    }
+                                }
+                            }
                         }
                     })
                 } else {
+                    // email already exists!
                     self?.isLoading = false
                     completion(false)
                     self?.emailAlreadyInUse?(error)

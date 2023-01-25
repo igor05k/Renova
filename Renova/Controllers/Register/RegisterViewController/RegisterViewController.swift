@@ -68,8 +68,8 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         cell.didTapCreateAccount = { [weak self] name, email, password, passwordConfirm in
             self?.viewModel.createAccount(name, email, password, passwordConfirm) { [weak self] success in
                 if success {
-//                    let controller = MainTabBarController()
-//                    self?.navigationController?.pushViewController(controller, animated: true)
+                    let controller = MainTabBarController()
+                    self?.navigationController?.pushViewController(controller, animated: true)
                 }
             }
         }

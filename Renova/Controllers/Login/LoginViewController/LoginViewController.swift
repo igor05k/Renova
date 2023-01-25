@@ -41,6 +41,11 @@ class LoginViewController: UIViewController {
         viewModel.onPasswordWrong = { [weak self] error in
             self?.showErrorMessage(error)
         }
+        
+        viewModel.onSignInWithGoogleSuccesful = { [weak self] in
+            let controller = MainTabBarController()
+            self?.navigationController?.pushViewController(controller, animated: true)
+        }
     }
     
     func showErrorMessage(_ errorMessage: Error) {
@@ -85,6 +90,10 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    private func didTapSignInWithGoogle() {
+        viewModel.signInWithGoogle(present: self)
+    }
 }
 
 extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
@@ -96,6 +105,10 @@ extension LoginViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.didTapLoginButton = { [weak self] email, password in
             self?.didTapLogin(email, password)
+        }
+        
+        cell.didTapSignInWithGoogle = { [weak self] in
+            self?.didTapSignInWithGoogle()
         }
         
         cell.configure(with: viewModel)

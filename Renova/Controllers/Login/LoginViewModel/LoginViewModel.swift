@@ -7,9 +7,16 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseCore
+import GoogleSignIn
+import FirebaseFirestore
 
 final class LoginViewModel {
     var onPasswordWrong: ((_ err: Error) -> Void)?
+    var unexpectedError: ((_ err: Error?) -> Void)?
+    
+    var onSignInWithGoogleSuccesful: (() -> Void)?
+    
     private let auth = Auth.auth()
     typealias LoginResult = ((Result<Bool, Error>) -> Void)
     
@@ -94,7 +101,77 @@ final class LoginViewModel {
                     self?.onPasswordWrong?(error)
                 }
             } else {
+                UserId.shared.userId = authDataResult?.user.uid
                 completion(.success(true))
+            }
+        }
+    }
+    
+    
+    func signInWithGoogle(present: UIViewController) {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.configuration = config
+        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(withPresenting: present) { [weak self] result, error in
+            
+            guard error == nil else {
+                self?.unexpectedError?(error)
+                return
+            }
+            
+            guard
+                let authentication = result?.user,
+                let idToken = authentication.idToken?.tokenString
+            else {
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: authentication.accessToken.tokenString)
+
+            Auth.auth().signIn(with: credential) { [weak self] dataResult, error in
+                guard error == nil else {
+                    self?.unexpectedError?(error)
+                    return
+                }
+
+                guard let uid = dataResult?.user.uid else { return }
+                
+                let firestore = Firestore.firestore()
+                let userRef = firestore.collection("users").document(uid)
+                
+                // image google pfp
+                guard let pfp = result?.user.profile?.imageURL(withDimension: 100) else { return }
+                let urlString = pfp.absoluteString
+
+                userRef.getDocument { snapshot, error in
+                    guard let snapshot else { return }
+                    // if it does not exists, set all new data
+                    if !snapshot.exists {
+                        guard let name = result?.user.profile?.name else { return }
+                        guard let email = result?.user.profile?.email else { return }
+                        userRef.setData([
+                            "nome": name,
+                            "email": email,
+                            "image": urlString,
+                        ]) { error in
+                            if let error = error {
+                                print("Error writing document: \(error.localizedDescription)")
+                                self?.unexpectedError?(error)
+                            } else {
+                                UserId.shared.userId = uid
+                                print("User data successfully written to Firestore!")
+                            }
+                        }
+                    }
+                }
+                
+                self?.onSignInWithGoogleSuccesful?()
             }
         }
     }
