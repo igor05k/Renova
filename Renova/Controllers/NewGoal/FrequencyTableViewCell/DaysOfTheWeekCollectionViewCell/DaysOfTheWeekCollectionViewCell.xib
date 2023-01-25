@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DaysOfTheWeekCollectionViewCell" customModule="Renova" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="84" height="114"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="84" height="114"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sB-sj-XDl">
+                        <rect key="frame" x="0.0" y="5" width="84" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKL-lk-Osx">
+                        <rect key="frame" x="5" y="26" width="74" height="83"/>
+                        <color key="backgroundColor" name="backgroundPrimary"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain"/>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="9sB-sj-XDl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="1oc-LP-jK4"/>
+                <constraint firstAttribute="bottom" secondItem="zKL-lk-Osx" secondAttribute="bottom" constant="5" id="8vK-cY-NHa"/>
+                <constraint firstItem="zKL-lk-Osx" firstAttribute="top" secondItem="9sB-sj-XDl" secondAttribute="bottom" id="Hon-it-XIm"/>
+                <constraint firstItem="zKL-lk-Osx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Ihl-Px-yL6"/>
+                <constraint firstAttribute="trailing" secondItem="9sB-sj-XDl" secondAttribute="trailing" id="Zvo-4n-cg0"/>
+                <constraint firstItem="9sB-sj-XDl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pr5-oM-olM"/>
+                <constraint firstAttribute="trailing" secondItem="zKL-lk-Osx" secondAttribute="trailing" constant="5" id="xbw-SV-vEa"/>
+            </constraints>
+            <size key="customSize" width="84" height="114"/>
+            <connections>
+                <outlet property="dayButton" destination="zKL-lk-Osx" id="DBB-dO-IRs"/>
+                <outlet property="dayLabel" destination="9sB-sj-XDl" id="4Am-mp-zE6"/>
+            </connections>
+            <point key="canvasLocation" x="161.53846153846152" y="43.364928909952603"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="backgroundPrimary">
+            <color red="0.14499999582767487" green="0.18000000715255737" blue="0.25900000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

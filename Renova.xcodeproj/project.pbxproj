@@ -15,6 +15,8 @@
 		82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B59297DDC2C00EAF1E0 /* RegisterView.swift */; };
 		82136B5E297E0B0500EAF1E0 /* RegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */; };
 		82136B5F297E0B0500EAF1E0 /* RegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */; };
+		824372E22981B889007EA51B /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824372E02981B889007EA51B /* FrequencyTableViewCell.swift */; };
+		824372E32981B889007EA51B /* FrequencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824372E12981B889007EA51B /* FrequencyTableViewCell.xib */; };
 		827707102980256A00B53595 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8277070F2980256A00B53595 /* MainTabBarController.swift */; };
 		8282C433297E168100E0B4EF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C432297E168100E0B4EF /* RegisterViewModel.swift */; };
 		8282C436297E181F00E0B4EF /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C435297E181F00E0B4EF /* Forms.swift */; };
@@ -29,12 +31,18 @@
 		8282C44F297EFD0A00E0B4EF /* AuthenticationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C44E297EFD0A00E0B4EF /* AuthenticationErrors.swift */; };
 		828A681129816C8D0013A4AF /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 828A681029816C8D0013A4AF /* GoogleSignIn */; };
 		828A681329816C8D0013A4AF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 828A681229816C8D0013A4AF /* GoogleSignInSwift */; };
+		828A68182981A8250013A4AF /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A68172981A8250013A4AF /* NewGoalView.swift */; };
+		828A681D2981A8650013A4AF /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A681C2981A8650013A4AF /* NewGoalViewController.swift */; };
+		828A68252981B4720013A4AF /* NewGoalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A68232981B4720013A4AF /* NewGoalDetailsTableViewCell.swift */; };
+		828A68262981B4720013A4AF /* NewGoalDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828A68242981B4720013A4AF /* NewGoalDetailsTableViewCell.xib */; };
 		82E5A9F9297DC44500F249A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5A9F8297DC44500F249A9 /* AppDelegate.swift */; };
 		82E5A9FB297DC44500F249A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5A9FA297DC44500F249A9 /* SceneDelegate.swift */; };
 		82E5AA02297DC44800F249A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E5AA01297DC44800F249A9 /* Assets.xcassets */; };
 		82E5AA05297DC44800F249A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82E5AA03297DC44800F249A9 /* LaunchScreen.storyboard */; };
 		82E5AA0E297DC94B00F249A9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 82E5AA0D297DC94B00F249A9 /* FirebaseAuth */; };
 		82E5AA10297DC94B00F249A9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 82E5AA0F297DC94B00F249A9 /* FirebaseFirestore */; };
+		82F8F2092981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F2072981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift */; };
+		82F8F20A2981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F2082981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +54,8 @@
 		82136B59297DDC2C00EAF1E0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewCell.swift; sourceTree = "<group>"; };
 		82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterTableViewCell.xib; sourceTree = "<group>"; };
+		824372E02981B889007EA51B /* FrequencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewCell.swift; sourceTree = "<group>"; };
+		824372E12981B889007EA51B /* FrequencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyTableViewCell.xib; sourceTree = "<group>"; };
 		8277070F2980256A00B53595 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8282C432297E168100E0B4EF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		8282C435297E181F00E0B4EF /* Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forms.swift; sourceTree = "<group>"; };
@@ -58,12 +68,18 @@
 		8282C449297EFA8900E0B4EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8282C44B297EFB9400E0B4EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8282C44E297EFD0A00E0B4EF /* AuthenticationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrors.swift; sourceTree = "<group>"; };
+		828A68172981A8250013A4AF /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
+		828A681C2981A8650013A4AF /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
+		828A68232981B4720013A4AF /* NewGoalDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		828A68242981B4720013A4AF /* NewGoalDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoalDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		82E5A9F5297DC44500F249A9 /* Renova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Renova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E5A9F8297DC44500F249A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E5A9FA297DC44500F249A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		82E5AA01297DC44800F249A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82E5AA04297DC44800F249A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82E5AA06297DC44900F249A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82F8F2072981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfTheWeekCollectionViewCell.swift; sourceTree = "<group>"; };
+		82F8F2082981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysOfTheWeekCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +165,16 @@
 			path = RegisterCell;
 			sourceTree = "<group>";
 		};
+		824372DF2981B85A007EA51B /* FrequencyTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				82F8F2062981D299001E911E /* DaysOfTheWeekCollectionViewCell */,
+				824372E02981B889007EA51B /* FrequencyTableViewCell.swift */,
+				824372E12981B889007EA51B /* FrequencyTableViewCell.xib */,
+			);
+			path = FrequencyTableViewCell;
+			sourceTree = "<group>";
+		};
 		8277070E2980253D00B53595 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +250,50 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		828A68162981A8170013A4AF /* NewGoal */ = {
+			isa = PBXGroup;
+			children = (
+				824372DF2981B85A007EA51B /* FrequencyTableViewCell */,
+				828A681E2981B3D10013A4AF /* DetailsTableViewCell */,
+				828A681B2981A8530013A4AF /* NewGoalViewModel */,
+				828A681A2981A84E0013A4AF /* NewGoalController */,
+				828A68192981A8450013A4AF /* NewGoalView */,
+			);
+			path = NewGoal;
+			sourceTree = "<group>";
+		};
+		828A68192981A8450013A4AF /* NewGoalView */ = {
+			isa = PBXGroup;
+			children = (
+				828A68172981A8250013A4AF /* NewGoalView.swift */,
+			);
+			path = NewGoalView;
+			sourceTree = "<group>";
+		};
+		828A681A2981A84E0013A4AF /* NewGoalController */ = {
+			isa = PBXGroup;
+			children = (
+				828A681C2981A8650013A4AF /* NewGoalViewController.swift */,
+			);
+			path = NewGoalController;
+			sourceTree = "<group>";
+		};
+		828A681B2981A8530013A4AF /* NewGoalViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewGoalViewModel;
+			sourceTree = "<group>";
+		};
+		828A681E2981B3D10013A4AF /* DetailsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				828A68232981B4720013A4AF /* NewGoalDetailsTableViewCell.swift */,
+				828A68242981B4720013A4AF /* NewGoalDetailsTableViewCell.xib */,
+			);
+			path = DetailsTableViewCell;
+			sourceTree = "<group>";
+		};
 		82E5A9EC297DC44500F249A9 = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +330,7 @@
 		82E5AA11297DCE5A00F249A9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				828A68162981A8170013A4AF /* NewGoal */,
 				8282C444297EFA4300E0B4EF /* Home */,
 				82136B53297DDAEC00EAF1E0 /* Register */,
 				82E5AA13297DCEE500F249A9 /* Login */,
@@ -311,6 +382,15 @@
 				82136B4B297DCFFD00EAF1E0 /* LoginViewController.swift */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		82F8F2062981D299001E911E /* DaysOfTheWeekCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				82F8F2072981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift */,
+				82F8F2082981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib */,
+			);
+			path = DaysOfTheWeekCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,9 +462,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E5AA05297DC44800F249A9 /* LaunchScreen.storyboard in Resources */,
+				824372E32981B889007EA51B /* FrequencyTableViewCell.xib in Resources */,
 				8282C43C297EC65800E0B4EF /* LoginTableViewCell.xib in Resources */,
+				828A68262981B4720013A4AF /* NewGoalDetailsTableViewCell.xib in Resources */,
 				8282C43E297EDACF00E0B4EF /* GoogleService-Info.plist in Resources */,
 				82136B5F297E0B0500EAF1E0 /* RegisterTableViewCell.xib in Resources */,
+				82F8F20A2981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib in Resources */,
 				82E5AA02297DC44800F249A9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,11 +488,16 @@
 				82136B4F297DD06400EAF1E0 /* LoginView.swift in Sources */,
 				82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */,
 				8282C446297EFA4D00E0B4EF /* HomeViewController.swift in Sources */,
+				828A681D2981A8650013A4AF /* NewGoalViewController.swift in Sources */,
+				824372E22981B889007EA51B /* FrequencyTableViewCell.swift in Sources */,
 				8282C443297EDDD900E0B4EF /* Alert.swift in Sources */,
 				8282C436297E181F00E0B4EF /* Forms.swift in Sources */,
 				82136B58297DDC1800EAF1E0 /* RegisterViewController.swift in Sources */,
+				828A68182981A8250013A4AF /* NewGoalView.swift in Sources */,
+				828A68252981B4720013A4AF /* NewGoalDetailsTableViewCell.swift in Sources */,
 				8282C44F297EFD0A00E0B4EF /* AuthenticationErrors.swift in Sources */,
 				82E5A9FB297DC44500F249A9 /* SceneDelegate.swift in Sources */,
+				82F8F2092981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift in Sources */,
 				82136B5E297E0B0500EAF1E0 /* RegisterTableViewCell.swift in Sources */,
 				820F33422980A89E0055B132 /* UserId.swift in Sources */,
 				8282C441297EDB9700E0B4EF /* RegEx.swift in Sources */,
