@@ -18,6 +18,7 @@ struct HabitData {
                                           "SÁB": "Sábado",
                                           "DOM": "Domingo"]
     var deadline: Int = 0
+    var time: String? = "No notifications"
     
     init() {}
 }

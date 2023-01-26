@@ -20,6 +20,8 @@ class ReminderTableViewCell: UITableViewCell {
     
     static let identifier: String = String(describing: ReminderTableViewCell.self)
     
+    var notificationAlarmChanged: ((_ timeRemaining: String?) -> Void)?
+    
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
@@ -78,9 +80,9 @@ class ReminderTableViewCell: UITableViewCell {
         
         if datePicked < Date.now {
             let tomorrow = datePicked.addingTimeInterval(86400)
-            print(tomorrow.formatted())
+            notificationAlarmChanged?(tomorrow.formatted())
         } else {
-            print(datePicked.formatted())
+            notificationAlarmChanged?(datePicked.formatted())
         }
     }
     

@@ -92,6 +92,11 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath) as? ReminderTableViewCell else { return UITableViewCell() }
+            
+            cell.notificationAlarmChanged = { [weak self] time in
+                self?.habit?.time = time
+            }
+            
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SaveGoalTableViewCell.identifier, for: indexPath) as? SaveGoalTableViewCell else { return SaveGoalTableViewCell() }
@@ -100,7 +105,8 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
                     self?.viewmodel.validadeFields(title: self?.habit?.title ?? "Nenhum título",
                                                    description: self?.habit?.description ?? "Nenhuma descrição",
                                                    days: self?.habit?.daysSelected ?? [:],
-                                                   deadline: self?.habit?.deadline ?? 0)
+                                                   deadline: self?.habit?.deadline ?? 0,
+                                                   time: self?.habit?.time ?? "No timer")
                 }
             
             return cell
