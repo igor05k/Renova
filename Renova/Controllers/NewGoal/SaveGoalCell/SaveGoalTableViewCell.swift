@@ -11,6 +11,8 @@ class SaveGoalTableViewCell: UITableViewCell {
     
     @IBOutlet weak var saveButtonElement: UIButton!
     
+    var didTapCreateHabit: (() -> Void)?
+    
     static let identifier: String = String(describing: SaveGoalTableViewCell.self)
     
     static func nib() -> UINib {
@@ -32,7 +34,6 @@ class SaveGoalTableViewCell: UITableViewCell {
     
     
     @IBAction func saveButton(_ sender: UIButton) {
-        print("create habit")
+        didTapCreateHabit?()
     }
-    
 }

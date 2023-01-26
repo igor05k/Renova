@@ -14,6 +14,8 @@ class DaysOfTheWeekCollectionViewCell: UICollectionViewCell {
     
     var isActive: Bool = true
     
+    var didChangeDays: ((_ cell: UICollectionViewCell) -> Void)?
+    
     static let identifier: String = String(describing: DaysOfTheWeekCollectionViewCell.self)
     
     static func nib() -> UINib {
@@ -32,6 +34,7 @@ class DaysOfTheWeekCollectionViewCell: UICollectionViewCell {
     
     @IBAction func daysToggled(_ sender: UIButton) {
         isActive = !isActive
+        didChangeDays?(self)
         changeDaysBackgrounds(isActive: isActive)
     }
     

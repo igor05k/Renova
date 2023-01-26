@@ -16,6 +16,9 @@ class NewGoalDetailsTableViewCell: UITableViewCell {
     
     static let identifier: String = String(describing: NewGoalDetailsTableViewCell.self)
     
+    var didChangeTitle: ((_ title: String) -> Void)?
+    var didChangeDescription: ((_ title: String?) -> Void)?
+    
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
@@ -34,5 +37,29 @@ class NewGoalDetailsTableViewCell: UITableViewCell {
         
         descriptionLabel.text = "Descrição"
         descriptionTextField.placeholder = "Treinar e correr todos os dias (opcional)"
+        
+        titleTextField.delegate = self
+        descriptionTextField.delegate = self
+    }
+}
+
+extension NewGoalDetailsTableViewCell: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == titleTextField {
+            if let title = textField.text {
+                didChangeTitle?(title)
+            }
+        } else if textField == descriptionTextField {
+            didChangeDescription?(textField.text)
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == titleTextField {
+            descriptionTextField.becomeFirstResponder()
+        } else if textField == descriptionTextField {
+            descriptionTextField.resignFirstResponder()
+        }
+        return true
     }
 }

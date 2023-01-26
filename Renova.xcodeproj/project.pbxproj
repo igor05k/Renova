@@ -47,6 +47,8 @@
 		82F8F20F2982CDF5001E911E /* ReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */; };
 		82F8F2132983065A001E911E /* SaveGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F2112983065A001E911E /* SaveGoalTableViewCell.swift */; };
 		82F8F2142983065A001E911E /* SaveGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F2122983065A001E911E /* SaveGoalTableViewCell.xib */; };
+		82F8F216298312A2001E911E /* NewGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F215298312A2001E911E /* NewGoalViewModel.swift */; };
+		82F8F21829831323001E911E /* HabitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F21729831323001E911E /* HabitData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderTableViewCell.xib; sourceTree = "<group>"; };
 		82F8F2112983065A001E911E /* SaveGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveGoalTableViewCell.swift; sourceTree = "<group>"; };
 		82F8F2122983065A001E911E /* SaveGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveGoalTableViewCell.xib; sourceTree = "<group>"; };
+		82F8F215298312A2001E911E /* NewGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewModel.swift; sourceTree = "<group>"; };
+		82F8F21729831323001E911E /* HabitData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				8282C435297E181F00E0B4EF /* Forms.swift */,
+				82F8F21729831323001E911E /* HabitData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 		828A681B2981A8530013A4AF /* NewGoalViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				82F8F215298312A2001E911E /* NewGoalViewModel.swift */,
 			);
 			path = NewGoalViewModel;
 			sourceTree = "<group>";
@@ -513,6 +519,7 @@
 				82136B4C297DCFFD00EAF1E0 /* LoginViewController.swift in Sources */,
 				827707102980256A00B53595 /* MainTabBarController.swift in Sources */,
 				82E5A9F9297DC44500F249A9 /* AppDelegate.swift in Sources */,
+				82F8F216298312A2001E911E /* NewGoalViewModel.swift in Sources */,
 				8282C44A297EFA8900E0B4EF /* HomeView.swift in Sources */,
 				8282C44C297EFB9400E0B4EF /* LoginViewModel.swift in Sources */,
 				82136B4F297DD06400EAF1E0 /* LoginView.swift in Sources */,
@@ -520,6 +527,7 @@
 				8282C446297EFA4D00E0B4EF /* HomeViewController.swift in Sources */,
 				82F8F20E2982CDF5001E911E /* ReminderTableViewCell.swift in Sources */,
 				828A681D2981A8650013A4AF /* NewGoalViewController.swift in Sources */,
+				82F8F21829831323001E911E /* HabitData.swift in Sources */,
 				824372E22981B889007EA51B /* FrequencyTableViewCell.swift in Sources */,
 				8282C443297EDDD900E0B4EF /* Alert.swift in Sources */,
 				8282C436297E181F00E0B4EF /* Forms.swift in Sources */,

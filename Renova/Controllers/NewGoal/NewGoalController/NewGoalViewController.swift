@@ -14,6 +14,9 @@ class NewGoalViewController: UIViewController {
     // notifications switch on off
     // deadline (optional)
     
+    var habit: HabitData?
+    private var viewmodel: NewGoalViewModel = NewGoalViewModel()
+    
     lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +47,7 @@ class NewGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
+        habit = HabitData()
         setTableViewConstraints()
     }
     
@@ -63,16 +67,35 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: NewGoalDetailsTableViewCell.identifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: NewGoalDetailsTableViewCell.identifier, for: indexPath) as? NewGoalDetailsTableViewCell else { return UITableViewCell() }
+            
+            cell.didChangeTitle = { [weak self] title in
+                self?.habit?.title = title
+            }
+            
+            cell.didChangeDescription = { [weak self] description in
+                self?.habit?.description = description
+            }
+            
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.identifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.identifier, for: indexPath) as? FrequencyTableViewCell else { return UITableViewCell() }
+            
+            cell.daysSelected = { [weak self] days in
+                self?.habit?.daysSelected = days
+            }
+            
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath) as? ReminderTableViewCell else { return UITableViewCell() }
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: SaveGoalTableViewCell.identifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SaveGoalTableViewCell.identifier, for: indexPath) as? SaveGoalTableViewCell else { return SaveGoalTableViewCell() }
+            
+            cell.didTapCreateHabit = {
+                self.viewmodel.validadeFields(title: self.habit?.title ?? "none", description: self.habit?.description ?? "none", days: self.habit?.daysSelected ?? [:])
+            }
+            
             return cell
         default:
             return UITableViewCell()
