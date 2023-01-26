@@ -36,6 +36,7 @@ class NewGoalViewController: UIViewController {
         tableView.backgroundColor = .viewBackgroundColor
         tableView.register(NewGoalDetailsTableViewCell.nib(), forCellReuseIdentifier: NewGoalDetailsTableViewCell.identifier)
         tableView.register(FrequencyTableViewCell.nib(), forCellReuseIdentifier: FrequencyTableViewCell.identifier)
+        tableView.register(ReminderTableViewCell.nib(), forCellReuseIdentifier: ReminderTableViewCell.identifier)
     }
     
     override func viewDidLoad() {
@@ -65,6 +66,9 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.identifier, for: indexPath)
             return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath)
+            return cell
         default:
             return UITableViewCell()
         }
@@ -74,16 +78,16 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int { 2 }
+    func numberOfSections(in tableView: UITableView) -> Int { 3 }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return 160
         case 1:
-            return 110
+            return 130
         default:
-            return 1
+            return 110
         }
     }
     
@@ -93,9 +97,10 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             return "Detalhes"
         case 1:
             return "Frequência"
+        case 2:
+            return "Lembretes"
         default:
             return nil
         }
     }
-
 }

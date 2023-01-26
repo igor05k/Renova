@@ -17,12 +17,11 @@ class FrequencyTableViewCell: UITableViewCell {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var sliderElement: UISlider!
-    
-    @IBOutlet weak var weeksLabel: UILabel!
     
     @IBOutlet weak var sliderContainerView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
+    @IBOutlet weak var deadlineLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +29,7 @@ class FrequencyTableViewCell: UITableViewCell {
         setupSegmentedControl()
         layer.cornerRadius = 10.0
         clipsToBounds = true
+        selectionStyle = .none
     }
     
     private func configCollectionView() {
@@ -40,36 +40,44 @@ class FrequencyTableViewCell: UITableViewCell {
     
     private func setupSegmentedControl() {
         segmentedControl.setTitle("Diariamente", forSegmentAt: 0)
-        segmentedControl.setTitle("Semanalmente", forSegmentAt: 1)
+        segmentedControl.setTitle("Prazo", forSegmentAt: 1)
         
-        sliderElement.isHidden = true
+        datePicker.isHidden = true
         sliderContainerView.isHidden = true
         
-        weeksLabel.text = "1 semana"
+        
+        let tomorrow = Date(timeIntervalSinceNow: 90000)
+        datePicker.minimumDate = tomorrow
+        
+        deadlineLabel.text = "Escolha uma data"
+        deadlineLabel.numberOfLines = 0
+    }
+    
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        let now = Date()
+        let timeRemaining = sender.date.timeIntervalSince(now)
+        // convert to days
+        let days = Int(timeRemaining / 86400)
+        
+        if days == 1 {
+            deadlineLabel.text = "Tempo restante \n\(days) dia"
+        } else {
+            deadlineLabel.text = "Tempo restante \n\(days) dias"
+        }
     }
     
     @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             collectionView.isHidden = false
-            sliderElement.isHidden = true
+            datePicker.isHidden = true
             sliderContainerView.isHidden = true
         case 1:
             collectionView.isHidden = true
-            sliderElement.isHidden = false
+            datePicker.isHidden = false
             sliderContainerView.isHidden = false
         default:
             break
-        }
-    }
-    
-    
-    @IBAction func sliderValueDidChange(_ sender: UISlider) {
-        let value = Int(sender.value)
-        if value == 1 {
-            weeksLabel.text = String("\(value) semana")
-        } else {
-            weeksLabel.text = String("\(value) semanas")
         }
     }
 }

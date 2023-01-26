@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="KGk-i7-Jjw" customClass="FrequencyTableViewCell" customModule="Renova" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="369" height="180"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="366" id="KGk-i7-Jjw" customClass="FrequencyTableViewCell" customModule="Renova" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="663" height="366"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="369" height="180"/>
+                <rect key="frame" x="0.0" y="0.0" width="663" height="366"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YYs-j7-jaS">
-                        <rect key="frame" x="5" y="5" width="359" height="32"/>
+                        <rect key="frame" x="5" y="5" width="653" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="31" id="DSU-mY-lgx"/>
                         </constraints>
@@ -30,11 +30,11 @@
                             <action selector="segmentedControlDidChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Xhh-B4-Ahk"/>
                         </connections>
                     </segmentedControl>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-XM-pzB">
-                        <rect key="frame" x="0.0" y="36" width="369" height="144"/>
+                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Jj9-XM-pzB">
+                        <rect key="frame" x="0.0" y="36" width="663" height="330"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1xH-Yb-7Vi">
-                                <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="144"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1xH-Yb-7Vi">
+                                <rect key="frame" x="0.0" y="0.0" width="331.66666666666669" height="330"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IEq-ug-Qlm">
                                     <size key="itemSize" width="128" height="128"/>
@@ -44,55 +44,55 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f58-cf-k2b">
-                                <rect key="frame" x="184.66666666666663" y="0.0" width="184.33333333333337" height="144"/>
+                                <rect key="frame" x="331.66666666666674" y="0.0" width="331.33333333333326" height="330"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="54" translatesAutoresizingMaskIntoConstraints="NO" id="bte-BE-7Ch">
-                                        <rect key="frame" x="-2" y="0.0" width="188.33333333333334" height="145"/>
-                                        <connections>
-                                            <action selector="sliderValueDidChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="gjx-lj-zLx"/>
-                                        </connections>
-                                    </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5J-EK-OC8">
-                                        <rect key="frame" x="0.0" y="123.66666666666664" width="179.33333333333334" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfd-eG-A1X">
+                                        <rect key="frame" x="5" y="5" width="41.333333333333336" height="320"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="1Kk-9b-K5c">
+                                        <rect key="frame" x="86" y="5" width="240" height="320"/>
+                                        <connections>
+                                            <action selector="datePickerChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Vqx-9i-Tx4"/>
+                                        </connections>
+                                    </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="g5J-EK-OC8" secondAttribute="bottom" id="3vz-Bq-WCz"/>
-                                    <constraint firstItem="bte-BE-7Ch" firstAttribute="top" secondItem="f58-cf-k2b" secondAttribute="top" id="G5C-5e-cCT"/>
-                                    <constraint firstAttribute="bottom" secondItem="bte-BE-7Ch" secondAttribute="bottom" id="MRu-zS-kVz"/>
-                                    <constraint firstAttribute="trailing" secondItem="g5J-EK-OC8" secondAttribute="trailing" constant="5" id="hXq-x9-a33"/>
-                                    <constraint firstAttribute="trailing" secondItem="bte-BE-7Ch" secondAttribute="trailing" id="kCD-zQ-EkG"/>
-                                    <constraint firstItem="bte-BE-7Ch" firstAttribute="leading" secondItem="f58-cf-k2b" secondAttribute="leading" id="vZ1-C4-pfA"/>
-                                    <constraint firstItem="g5J-EK-OC8" firstAttribute="leading" secondItem="f58-cf-k2b" secondAttribute="leading" id="zs0-uZ-0id"/>
+                                    <constraint firstItem="jfd-eG-A1X" firstAttribute="centerY" secondItem="f58-cf-k2b" secondAttribute="centerY" id="1SN-g1-oT3"/>
+                                    <constraint firstItem="jfd-eG-A1X" firstAttribute="leading" secondItem="f58-cf-k2b" secondAttribute="leading" constant="5" id="Qpp-Um-8wI"/>
+                                    <constraint firstItem="jfd-eG-A1X" firstAttribute="top" secondItem="f58-cf-k2b" secondAttribute="top" constant="5" id="X56-Pn-zbY"/>
+                                    <constraint firstItem="1Kk-9b-K5c" firstAttribute="leading" secondItem="jfd-eG-A1X" secondAttribute="trailing" constant="40" id="Y7x-Ri-7ve"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Kk-9b-K5c" secondAttribute="bottom" constant="5" id="csF-0T-Ed2"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Kk-9b-K5c" secondAttribute="trailing" constant="5" id="kq6-qF-G5r"/>
+                                    <constraint firstItem="1Kk-9b-K5c" firstAttribute="top" secondItem="f58-cf-k2b" secondAttribute="top" constant="5" id="wA0-oS-df2"/>
+                                    <constraint firstItem="1Kk-9b-K5c" firstAttribute="centerY" secondItem="jfd-eG-A1X" secondAttribute="centerY" id="xHL-Le-vLh"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.28627450980000002" green="0.0" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="YYs-j7-jaS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="171-qE-Bpr"/>
-                    <constraint firstAttribute="trailing" secondItem="Jj9-XM-pzB" secondAttribute="trailing" id="1WN-i9-KRO"/>
+                    <constraint firstItem="Jj9-XM-pzB" firstAttribute="top" secondItem="YYs-j7-jaS" secondAttribute="bottom" id="Bkj-NH-gS5"/>
                     <constraint firstItem="YYs-j7-jaS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="O2D-KC-GwS"/>
+                    <constraint firstItem="Jj9-XM-pzB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WmF-Sf-uaV"/>
                     <constraint firstAttribute="trailing" secondItem="YYs-j7-jaS" secondAttribute="trailing" constant="5" id="YNO-Bw-JSR"/>
-                    <constraint firstItem="Jj9-XM-pzB" firstAttribute="top" secondItem="YYs-j7-jaS" secondAttribute="bottom" id="ezF-Mm-cZI"/>
-                    <constraint firstItem="Jj9-XM-pzB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ryW-Xa-zFA"/>
-                    <constraint firstAttribute="bottom" secondItem="Jj9-XM-pzB" secondAttribute="bottom" id="v7P-kd-9VJ"/>
+                    <constraint firstAttribute="trailing" secondItem="Jj9-XM-pzB" secondAttribute="trailing" id="dlT-Hb-Wky"/>
+                    <constraint firstAttribute="bottom" secondItem="Jj9-XM-pzB" secondAttribute="bottom" id="tNo-3f-Rle"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="1xH-Yb-7Vi" id="Ssd-79-nwU"/>
+                <outlet property="datePicker" destination="1Kk-9b-K5c" id="wqw-MU-2Nu"/>
+                <outlet property="deadlineLabel" destination="jfd-eG-A1X" id="xPA-Ed-AEM"/>
                 <outlet property="segmentedControl" destination="YYs-j7-jaS" id="Fri-E7-lmZ"/>
                 <outlet property="sliderContainerView" destination="f58-cf-k2b" id="PO5-6J-GzY"/>
-                <outlet property="sliderElement" destination="bte-BE-7Ch" id="ynq-L5-4RZ"/>
-                <outlet property="weeksLabel" destination="g5J-EK-OC8" id="MeG-AE-Pbi"/>
             </connections>
-            <point key="canvasLocation" x="14.615384615384615" y="48.341232227488149"/>
+            <point key="canvasLocation" x="240.76923076923077" y="114.45497630331754"/>
         </tableViewCell>
     </objects>
     <resources>

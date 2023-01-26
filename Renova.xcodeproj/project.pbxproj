@@ -43,6 +43,8 @@
 		82E5AA10297DC94B00F249A9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 82E5AA0F297DC94B00F249A9 /* FirebaseFirestore */; };
 		82F8F2092981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F2072981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift */; };
 		82F8F20A2981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F2082981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib */; };
+		82F8F20E2982CDF5001E911E /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F20C2982CDF5001E911E /* ReminderTableViewCell.swift */; };
+		82F8F20F2982CDF5001E911E /* ReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		82E5AA06297DC44900F249A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82F8F2072981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfTheWeekCollectionViewCell.swift; sourceTree = "<group>"; };
 		82F8F2082981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysOfTheWeekCollectionViewCell.xib; sourceTree = "<group>"; };
+		82F8F20C2982CDF5001E911E /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
+		82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +257,7 @@
 		828A68162981A8170013A4AF /* NewGoal */ = {
 			isa = PBXGroup;
 			children = (
+				82F8F20B2982CDD9001E911E /* ReminderTableViewCell */,
 				824372DF2981B85A007EA51B /* FrequencyTableViewCell */,
 				828A681E2981B3D10013A4AF /* DetailsTableViewCell */,
 				828A681B2981A8530013A4AF /* NewGoalViewModel */,
@@ -393,6 +398,15 @@
 			path = DaysOfTheWeekCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		82F8F20B2982CDD9001E911E /* ReminderTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				82F8F20C2982CDF5001E911E /* ReminderTableViewCell.swift */,
+				82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */,
+			);
+			path = ReminderTableViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,6 +480,7 @@
 				8282C43C297EC65800E0B4EF /* LoginTableViewCell.xib in Resources */,
 				828A68262981B4720013A4AF /* NewGoalDetailsTableViewCell.xib in Resources */,
 				8282C43E297EDACF00E0B4EF /* GoogleService-Info.plist in Resources */,
+				82F8F20F2982CDF5001E911E /* ReminderTableViewCell.xib in Resources */,
 				82136B5F297E0B0500EAF1E0 /* RegisterTableViewCell.xib in Resources */,
 				82F8F20A2981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib in Resources */,
 				82E5AA02297DC44800F249A9 /* Assets.xcassets in Resources */,
@@ -488,6 +503,7 @@
 				82136B4F297DD06400EAF1E0 /* LoginView.swift in Sources */,
 				82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */,
 				8282C446297EFA4D00E0B4EF /* HomeViewController.swift in Sources */,
+				82F8F20E2982CDF5001E911E /* ReminderTableViewCell.swift in Sources */,
 				828A681D2981A8650013A4AF /* NewGoalViewController.swift in Sources */,
 				824372E22981B889007EA51B /* FrequencyTableViewCell.swift in Sources */,
 				8282C443297EDDD900E0B4EF /* Alert.swift in Sources */,
