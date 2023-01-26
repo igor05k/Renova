@@ -85,6 +85,10 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
                 self?.habit?.daysSelected = days
             }
             
+            cell.deadlineSelected = { [weak self] days in
+                self?.habit?.deadline = days
+            }
+            
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath) as? ReminderTableViewCell else { return UITableViewCell() }
@@ -92,9 +96,12 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SaveGoalTableViewCell.identifier, for: indexPath) as? SaveGoalTableViewCell else { return SaveGoalTableViewCell() }
             
-            cell.didTapCreateHabit = {
-                self.viewmodel.validadeFields(title: self.habit?.title ?? "none", description: self.habit?.description ?? "none", days: self.habit?.daysSelected ?? [:])
-            }
+                cell.didTapCreateHabit = { [weak self] in
+                    self?.viewmodel.validadeFields(title: self?.habit?.title ?? "Nenhum título",
+                                                   description: self?.habit?.description ?? "Nenhuma descrição",
+                                                   days: self?.habit?.daysSelected ?? [:],
+                                                   deadline: self?.habit?.deadline ?? 0)
+                }
             
             return cell
         default:

@@ -19,10 +19,30 @@ enum DaysOfTheWeek: String, CaseIterable {
     static func selectDay(at index: Int) -> DaysOfTheWeek {
         return DaysOfTheWeek.allCases[index]
     }
+    
+    static func convertDay(rawValue: String) -> String? {
+        switch rawValue {
+        case "SEG": return "Segunda"
+        case "TER": return "Terça"
+        case "QUA": return "Quarta"
+        case "QUI": return "Quinta"
+        case "SEX": return "Sexta"
+        case "SÁB": return "Sábado"
+        case "DOM": return "Domingo"
+        default: return nil
+        }
+    }
+}
+
+enum SegmentSelected: Int {
+    case daily = 0
+    case deadline = 1
 }
 
 class FrequencyTableViewCell: UITableViewCell {
     
+    // preciso usar dict pois array utiliza index e nesse caso queremos usar chave-valor para selecionar e remover
+    // os items precisamente
     var daysOfTheWeekDict: [String: String] = ["SEG": "Segunda",
                                                "TER": "Terça",
                                                "QUA": "Quarta",
@@ -32,6 +52,7 @@ class FrequencyTableViewCell: UITableViewCell {
                                                "DOM": "Domingo"]
     
     var daysSelected: ((_ days: [String: String]) -> Void)?
+    var deadlineSelected: ((_ days: Int) -> Void)?
     
     static let identifier: String = String(describing: FrequencyTableViewCell.self)
     
@@ -84,37 +105,30 @@ class FrequencyTableViewCell: UITableViewCell {
         let days = Int(timeRemaining / 86400)
         
         if days == 1 {
+            deadlineSelected?(days)
             deadlineLabel.text = "Tempo restante \n\(days) dia"
         } else {
+            deadlineSelected?(days)
             deadlineLabel.text = "Tempo restante \n\(days) dias"
         }
     }
     
     @IBAction func segmentedControlDidChange(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0:
+        case SegmentSelected.daily.rawValue:
             collectionView.isHidden = false
             datePicker.isHidden = true
             sliderContainerView.isHidden = true
-        case 1:
+            // reseta os valores quando muda de segmento
+            deadlineSelected?(0)
+        case SegmentSelected.deadline.rawValue:
             collectionView.isHidden = true
             datePicker.isHidden = false
             sliderContainerView.isHidden = false
+            // reseta os valores quando muda de segmento
+            daysSelected?([:])
         default:
             break
-        }
-    }
-    
-    func day(rawValue: String) -> String? {
-        switch rawValue {
-        case "SEG": return "Segunda"
-        case "TER": return "Terça"
-        case "QUA": return "Quarta"
-        case "QUI": return "Quinta"
-        case "SEX": return "Sexta"
-        case "SÁB": return "Sábado"
-        case "DOM": return "Domingo"
-        default: return nil
         }
     }
 }
@@ -134,7 +148,7 @@ extension FrequencyTableViewCell: UICollectionViewDelegate, UICollectionViewData
                     self.daysOfTheWeekDict.removeValue(forKey: choosedDay)
                     self.daysSelected?(self.daysOfTheWeekDict)
                 } else {
-                    guard let dayToUpdate = self.day(rawValue: choosedDay) else { return }
+                    guard let dayToUpdate = DaysOfTheWeek.convertDay(rawValue: choosedDay) else { return }
                     self.daysOfTheWeekDict.updateValue(dayToUpdate, forKey: choosedDay)
                     self.daysSelected?(self.daysOfTheWeekDict)
                 }

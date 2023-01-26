@@ -9,7 +9,7 @@ import Foundation
 
 struct NewGoalViewModel {
     
-    func validadeFields(title: String, description: String, days: [String: String]) {
-        print(title, description, days)
+    func validadeFields(title: String, description: String, days: [String: String], deadline: Int) {
+        print(title, description, days, deadline)
     }
 }

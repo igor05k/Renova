@@ -17,6 +17,7 @@ struct HabitData {
                                           "SEX": "Sexta",
                                           "SÁB": "Sábado",
                                           "DOM": "Domingo"]
+    var deadline: Int = 0
     
     init() {}
 }
