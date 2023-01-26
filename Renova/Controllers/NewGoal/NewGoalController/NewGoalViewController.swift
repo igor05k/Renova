@@ -33,10 +33,12 @@ class NewGoalViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.layer.cornerRadius = 10
         tableView.clipsToBounds = true
+        tableView.sectionHeaderTopPadding = 0
         tableView.backgroundColor = .viewBackgroundColor
         tableView.register(NewGoalDetailsTableViewCell.nib(), forCellReuseIdentifier: NewGoalDetailsTableViewCell.identifier)
         tableView.register(FrequencyTableViewCell.nib(), forCellReuseIdentifier: FrequencyTableViewCell.identifier)
         tableView.register(ReminderTableViewCell.nib(), forCellReuseIdentifier: ReminderTableViewCell.identifier)
+        tableView.register(SaveGoalTableViewCell.nib(), forCellReuseIdentifier: SaveGoalTableViewCell.identifier)
     }
     
     override func viewDidLoad() {
@@ -69,6 +71,9 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath)
             return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SaveGoalTableViewCell.identifier, for: indexPath)
+            return cell
         default:
             return UITableViewCell()
         }
@@ -78,7 +83,7 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int { 3 }
+    func numberOfSections(in tableView: UITableView) -> Int { 4 }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
@@ -86,10 +91,22 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             return 160
         case 1:
             return 130
-        default:
+        case 2:
             return 110
+        default:
+            return 50
         }
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 3 {
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 10))
+            headerView.backgroundColor = .clear
+            return headerView
+        }
+        return nil
+    }
+    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {

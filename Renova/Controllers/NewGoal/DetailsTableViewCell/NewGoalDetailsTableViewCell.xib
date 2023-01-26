@@ -56,8 +56,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="detailsTextField" destination="pUl-hE-eWK" id="Ka6-VW-ngD"/>
+                <outlet property="descriptionLabel" destination="Vzd-8z-pqA" id="MRT-nF-bG6"/>
+                <outlet property="descriptionTextField" destination="sPX-cO-vl5" id="mzR-4Y-Ah2"/>
                 <outlet property="titleDetailsLabel" destination="QH0-fy-8Ru" id="abW-mT-9DN"/>
+                <outlet property="titleTextField" destination="pUl-hE-eWK" id="nZT-CB-VNQ"/>
             </connections>
             <point key="canvasLocation" x="89.230769230769226" y="60.78199052132701"/>
         </tableViewCell>

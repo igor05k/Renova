@@ -45,6 +45,8 @@
 		82F8F20A2981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F2082981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib */; };
 		82F8F20E2982CDF5001E911E /* ReminderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F20C2982CDF5001E911E /* ReminderTableViewCell.swift */; };
 		82F8F20F2982CDF5001E911E /* ReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */; };
+		82F8F2132983065A001E911E /* SaveGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F2112983065A001E911E /* SaveGoalTableViewCell.swift */; };
+		82F8F2142983065A001E911E /* SaveGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F2122983065A001E911E /* SaveGoalTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		82F8F2082981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysOfTheWeekCollectionViewCell.xib; sourceTree = "<group>"; };
 		82F8F20C2982CDF5001E911E /* ReminderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTableViewCell.swift; sourceTree = "<group>"; };
 		82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderTableViewCell.xib; sourceTree = "<group>"; };
+		82F8F2112983065A001E911E /* SaveGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveGoalTableViewCell.swift; sourceTree = "<group>"; };
+		82F8F2122983065A001E911E /* SaveGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveGoalTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +261,7 @@
 		828A68162981A8170013A4AF /* NewGoal */ = {
 			isa = PBXGroup;
 			children = (
+				82F8F21029830642001E911E /* SaveGoalCell */,
 				82F8F20B2982CDD9001E911E /* ReminderTableViewCell */,
 				824372DF2981B85A007EA51B /* FrequencyTableViewCell */,
 				828A681E2981B3D10013A4AF /* DetailsTableViewCell */,
@@ -407,6 +412,15 @@
 			path = ReminderTableViewCell;
 			sourceTree = "<group>";
 		};
+		82F8F21029830642001E911E /* SaveGoalCell */ = {
+			isa = PBXGroup;
+			children = (
+				82F8F2112983065A001E911E /* SaveGoalTableViewCell.swift */,
+				82F8F2122983065A001E911E /* SaveGoalTableViewCell.xib */,
+			);
+			path = SaveGoalCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -478,6 +492,7 @@
 				82E5AA05297DC44800F249A9 /* LaunchScreen.storyboard in Resources */,
 				824372E32981B889007EA51B /* FrequencyTableViewCell.xib in Resources */,
 				8282C43C297EC65800E0B4EF /* LoginTableViewCell.xib in Resources */,
+				82F8F2142983065A001E911E /* SaveGoalTableViewCell.xib in Resources */,
 				828A68262981B4720013A4AF /* NewGoalDetailsTableViewCell.xib in Resources */,
 				8282C43E297EDACF00E0B4EF /* GoogleService-Info.plist in Resources */,
 				82F8F20F2982CDF5001E911E /* ReminderTableViewCell.xib in Resources */,
@@ -511,6 +526,7 @@
 				82136B58297DDC1800EAF1E0 /* RegisterViewController.swift in Sources */,
 				828A68182981A8250013A4AF /* NewGoalView.swift in Sources */,
 				828A68252981B4720013A4AF /* NewGoalDetailsTableViewCell.swift in Sources */,
+				82F8F2132983065A001E911E /* SaveGoalTableViewCell.swift in Sources */,
 				8282C44F297EFD0A00E0B4EF /* AuthenticationErrors.swift in Sources */,
 				82E5A9FB297DC44500F249A9 /* SceneDelegate.swift in Sources */,
 				82F8F2092981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.swift in Sources */,

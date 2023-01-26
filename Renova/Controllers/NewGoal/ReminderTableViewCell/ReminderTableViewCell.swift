@@ -34,25 +34,24 @@ class ReminderTableViewCell: UITableViewCell {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
             if granted {
-                let content = UNMutableNotificationContent()
-                content.title = "Alarm"
-                content.body = "Time to wake up"
-                content.sound = UNNotificationSound.default
-                
-                let date = DateComponents(second: 5)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
-                
-//                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 15, repeats: false)
-                
-                let request = UNNotificationRequest(identifier: "alarm", content: content, trigger: trigger)
-                
-                UNUserNotificationCenter.current().add(request) { ( error) in
-                    if error != nil {
-                        print("Error scheduling notification: \(error?.localizedDescription ?? "")")
-                    } else {
-                        print("Notification scheduled successfully")
-                    }
-                }
+//                let content = UNMutableNotificationContent()
+//                content.title = "Alarm"
+//                content.body = "Time to wake up"
+//                content.sound = UNNotificationSound.default
+//
+//                let date = DateComponents(second: 5)
+//                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+//
+//
+//                let request = UNNotificationRequest(identifier: "alarm", content: content, trigger: trigger)
+//
+//                UNUserNotificationCenter.current().add(request) { ( error) in
+//                    if error != nil {
+//                        print("Error scheduling notification: \(error?.localizedDescription ?? "")")
+//                    } else {
+//                        print("Notification scheduled successfully")
+//                    }
+//                }
             } else {
                 print("Permission denied")
             }

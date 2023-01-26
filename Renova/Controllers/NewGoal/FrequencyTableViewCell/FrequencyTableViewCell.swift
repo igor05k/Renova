@@ -9,6 +9,8 @@ import UIKit
 
 class FrequencyTableViewCell: UITableViewCell {
     
+    let daysOfTheWeek: [String] = ["SEG", "TER", "QUA", "QUI", "SEX", "SÁB", "DOM"]
+    
     static let identifier: String = String(describing: FrequencyTableViewCell.self)
     
     static func nib() -> UINib {
@@ -84,12 +86,13 @@ class FrequencyTableViewCell: UITableViewCell {
 
 extension FrequencyTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysOfTheWeekCollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DaysOfTheWeekCollectionViewCell.identifier, for: indexPath) as? DaysOfTheWeekCollectionViewCell else { return UICollectionViewCell() }
+        cell.setupLabels(daysOfTheWeek: daysOfTheWeek[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return daysOfTheWeek.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

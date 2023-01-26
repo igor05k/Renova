@@ -12,6 +12,8 @@ class DaysOfTheWeekCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dayButton: UIButton!
     
+    var isActive: Bool = true
+    
     static let identifier: String = String(describing: DaysOfTheWeekCollectionViewCell.self)
     
     static func nib() -> UINib {
@@ -22,5 +24,24 @@ class DaysOfTheWeekCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         dayButton.layer.cornerRadius = 10
     }
-
+    
+    func setupLabels(daysOfTheWeek: String) {
+        dayLabel.text = daysOfTheWeek
+    }
+    
+    
+    @IBAction func daysToggled(_ sender: UIButton) {
+        isActive = !isActive
+        changeDaysBackgrounds(isActive: isActive)
+    }
+    
+    private func changeDaysBackgrounds(isActive: Bool) {
+        if isActive {
+            dayButton.backgroundColor = .backgroundPrimary
+        } else {
+            dayButton.backgroundColor = .clear
+            dayButton.layer.borderWidth = 1
+            dayButton.layer.borderColor = CGColor(red: 37 / 255, green: 46 / 255, blue: 66 / 255, alpha: 1)
+        }
+    }
 }
