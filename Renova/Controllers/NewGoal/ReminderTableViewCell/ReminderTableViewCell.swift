@@ -63,7 +63,7 @@ class ReminderTableViewCell: UITableViewCell {
     
     private func configElements() {
         notificationsLabel.text = "Notificações"
-        timerLabel.text = "Alarme"
+        timerLabel.text = "Avisar às"
         
         timerPicker.setValue(UIColor.white, forKey: "backgroundColor")
         

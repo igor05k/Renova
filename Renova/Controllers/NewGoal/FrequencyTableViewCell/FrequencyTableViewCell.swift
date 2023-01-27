@@ -54,6 +54,9 @@ class FrequencyTableViewCell: UITableViewCell {
     var daysSelected: ((_ days: [String: String]) -> Void)?
     var deadlineSelected: ((_ days: Int) -> Void)?
     
+    /// this is needed for track the number of days selected in the deadline so when the user left the deadline segment and then come back, the number still there.
+    private var numberOfDays: Int = 0
+    
     static let identifier: String = String(describing: FrequencyTableViewCell.self)
     
     static func nib() -> UINib {
@@ -103,6 +106,7 @@ class FrequencyTableViewCell: UITableViewCell {
         let timeRemaining = sender.date.timeIntervalSince(now)
         // convert to days
         let days = Int(timeRemaining / 86400)
+        numberOfDays = days
         
         if days == 1 {
             deadlineSelected?(days)
@@ -119,13 +123,17 @@ class FrequencyTableViewCell: UITableViewCell {
             collectionView.isHidden = false
             datePicker.isHidden = true
             sliderContainerView.isHidden = true
+            
             // reseta os valores quando muda de segmento
             deadlineSelected?(0)
+            daysSelected?(daysOfTheWeekDict)
         case SegmentSelected.deadline.rawValue:
             collectionView.isHidden = true
             datePicker.isHidden = false
             sliderContainerView.isHidden = false
+            
             // reseta os valores quando muda de segmento
+            deadlineSelected?(numberOfDays)
             daysSelected?([:])
         default:
             break
