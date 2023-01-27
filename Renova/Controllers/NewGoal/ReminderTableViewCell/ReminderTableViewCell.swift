@@ -22,6 +22,12 @@ class ReminderTableViewCell: UITableViewCell {
     
     var notificationAlarmChanged: ((_ timeRemaining: String?) -> Void)?
     
+    private var isNotificationsOn: Bool = false {
+        didSet {
+            notificationAlarmChanged?(timerPicker.date.formatted())
+        }
+    }
+    
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
@@ -65,25 +71,40 @@ class ReminderTableViewCell: UITableViewCell {
         notificationsLabel.text = "Notificações"
         timerLabel.text = "Avisar às"
         
-        timerPicker.setValue(UIColor.white, forKey: "backgroundColor")
+        notificationsSwitch.isOn = false
+        blurNotifications()
         
         // convert timezone to GMT-3
         let gmtMinus3 = TimeZone(secondsFromGMT: -60 * 60 * 3)
         timerPicker.timeZone = gmtMinus3
     }
     
+    private func setNotifications(_ sender: UIDatePicker) {
+        // se o horario selecionado for menor que o horario atual, significa que sera agendado para o proximo dia
+        if isNotificationsOn {
+            let datePicked = sender.date
+            
+            if datePicked < Date.now {
+                let tomorrow = datePicked.addingTimeInterval(86400)
+                notificationAlarmChanged?(tomorrow.formatted())
+            } else {
+                notificationAlarmChanged?(datePicked.formatted())
+            }
+        }
+    }
     
     @IBAction func timerDidChange(_ sender: UIDatePicker) {
-        // se o horario selecionado for menor que o horario atual, significa que sera agendado para o proximo dia
-        
-        let datePicked = sender.date
-        
-        if datePicked < Date.now {
-            let tomorrow = datePicked.addingTimeInterval(86400)
-            notificationAlarmChanged?(tomorrow.formatted())
-        } else {
-            notificationAlarmChanged?(datePicked.formatted())
-        }
+        setNotifications(sender)
+    }
+    
+    func blurNotifications() {
+        timerLabel.textColor = .lightGray
+        timerPicker.isEnabled = false
+        timerPicker.addSubview(blurView)
+        blurView.alpha = 1
+        blurView.frame = timerPicker.bounds
+        isNotificationsOn = false
+        notificationAlarmChanged?("Sem avisos")
     }
     
     @IBAction func notificationsDidChange(_ sender: UISwitch) {
@@ -91,12 +112,9 @@ class ReminderTableViewCell: UITableViewCell {
             blurView.alpha = 0
             timerPicker.isEnabled = true
             timerLabel.textColor = .black
+            isNotificationsOn = true
         } else {
-            timerLabel.textColor = .lightGray
-            timerPicker.isEnabled = false
-            timerPicker.addSubview(blurView)
-            blurView.alpha = 1
-            blurView.frame = timerPicker.bounds
+            blurNotifications()
         }
     }
 }
