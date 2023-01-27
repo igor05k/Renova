@@ -90,6 +90,9 @@ class FrequencyTableViewCell: UITableViewCell {
         segmentedControl.setTitle("Diariamente", forSegmentAt: 0)
         segmentedControl.setTitle("Prazo", forSegmentAt: 1)
         
+        segmentedControl.backgroundColor = .backgroundSecondary
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.backgroundPrimary], for: .normal)
+        
         datePicker.isHidden = true
         sliderContainerView.isHidden = true
         

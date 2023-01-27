@@ -44,7 +44,7 @@ class DaysOfTheWeekCollectionViewCell: UICollectionViewCell {
         } else {
             dayButton.backgroundColor = .clear
             dayButton.layer.borderWidth = 1
-            dayButton.layer.borderColor = CGColor(red: 37 / 255, green: 46 / 255, blue: 66 / 255, alpha: 1)
+            dayButton.layer.borderColor = CGColor(red: 128 / 255, green: 120 / 255, blue: 115 / 255, alpha: 1)
         }
     }
 }

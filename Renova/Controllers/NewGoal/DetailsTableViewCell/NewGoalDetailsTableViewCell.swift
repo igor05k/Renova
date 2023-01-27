@@ -34,12 +34,19 @@ class NewGoalDetailsTableViewCell: UITableViewCell {
     func configElements() {
         titleDetailsLabel.text = "Título"
         titleTextField.placeholder = "Correr 5km"
+        titleTextField.layer.borderWidth = 1
+        titleTextField.layer.borderColor = CGColor(red: 128 / 255, green: 120 / 255, blue: 115 / 255, alpha: 1)
+        titleTextField.layer.cornerRadius = 5
         
         descriptionLabel.text = "Descrição"
         descriptionTextField.placeholder = "Treinar e correr todos os dias (opcional)"
+        descriptionTextField.layer.borderWidth = 1
+        descriptionTextField.layer.borderColor = CGColor(red: 128 / 255, green: 120 / 255, blue: 115 / 255, alpha: 1)
+        descriptionTextField.layer.cornerRadius = 5
         
         titleTextField.delegate = self
         descriptionTextField.delegate = self
+        
     }
 }
 

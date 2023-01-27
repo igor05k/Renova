@@ -23,18 +23,24 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pUl-hE-eWK">
-                        <rect key="frame" x="5" y="34" width="300" height="34"/>
+                        <rect key="frame" x="5" y="34" width="300" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="IVR-sT-VQ5"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzd-8z-pqA">
-                        <rect key="frame" x="5" y="73" width="300" height="21"/>
+                        <rect key="frame" x="5" y="79" width="300" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sPX-cO-vl5">
-                        <rect key="frame" x="5" y="102" width="300" height="34"/>
+                        <rect key="frame" x="5" y="108" width="300" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="6gG-ce-BmD"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
