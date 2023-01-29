@@ -11,7 +11,10 @@ class ProgressCardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var progressViewContainr: UIView!
     @IBOutlet weak var progressLabel: UILabel!
-  
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    
     static let identifier: String = String(describing: ProgressCardTableViewCell.self)
     
     static func nib() -> UINib {
@@ -26,13 +29,20 @@ class ProgressCardTableViewCell: UITableViewCell {
         layer.cornerRadius = 10
         selectionStyle = .none
         setupProgressView()
+        setupProgressLabel()
     }
     
     private func setupProgressLabel() {
-        progressLabel.text = "0%"
+        progressLabel.text = "82%"
         progressLabel.textColor = UIColor.gray
         progressLabel.textAlignment = .center
         progressLabel.font = UIFont.boldSystemFont(ofSize: 32)
+        
+        titleLabel.text = "Resumo"
+        titleLabel.textColor = .init(red: 64 / 255, green: 60 / 255, blue: 57 / 255, alpha: 1)
+        
+        subtitleLabel.text = "Você está quase lá. Continue se desafiando"
+        subtitleLabel.textColor = .init(red: 128 / 255, green: 120 / 255, blue: 115 / 255, alpha: 1)
     }
 
     private func setupProgressView() {
