@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: BaseViewController {
     private var screen: RegisterView?
     private var viewModel: RegisterViewModel = RegisterViewModel()
     

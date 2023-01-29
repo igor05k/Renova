@@ -22,6 +22,7 @@ class SaveGoalTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configButton()
+        clipsToBounds = true
     }
     
     private func configButton() {

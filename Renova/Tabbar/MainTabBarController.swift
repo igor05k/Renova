@@ -10,18 +10,38 @@ import UIKit
 class MainTabBarController: UITabBarController {
     
     let home = UINavigationController(rootViewController: HomeViewController())
+    let progress = UINavigationController(rootViewController: ProgressViewController())
+    let settings = UINavigationController(rootViewController: SettingsViewController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        abc()
+        configControllers()
+        configItems()
+        tabBar.backgroundColor = .backgroundSecondary
+        tabBar.tintColor = .iconColor
+        tabBar.barTintColor = .iconColor
     }
     
-    func abc() {
-        setViewControllers([home], animated: true)
+    func configControllers() {
+        setViewControllers([home, progress, settings], animated: true)
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        self.navigationItem.hidesBackButton = true
-//    }
+    func configItems() {
+        home.tabBarItem.image = UIImage(systemName: "house.fill")
+        home.tabBarItem.title = "Home"
+        
+        progress.tabBarItem.image = UIImage(systemName: "chart.bar.fill")
+        progress.tabBarItem.title = "Progresso"
+        
+        settings.tabBarItem.image = UIImage(systemName: "gear")
+        settings.tabBarItem.title = "Configurações"
+        
+        tabBar.isTranslucent = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.hidesBackButton = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 }

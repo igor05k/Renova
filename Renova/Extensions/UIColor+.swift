@@ -19,4 +19,12 @@ extension UIColor {
     static var backgroundSecondary: UIColor {
         return UIColor(named: "backgroundSecondary") ?? .black
     }
+    
+    static var iconColor: UIColor {
+        return UIColor(named: "iconColors") ?? .black
+    }
+    
+    static var backgroundCell: UIColor {
+        return UIColor(named: "backgroundCell") ?? .black
+    }
 }

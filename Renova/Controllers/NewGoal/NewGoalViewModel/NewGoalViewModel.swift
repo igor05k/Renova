@@ -7,19 +7,66 @@
 
 import Foundation
 
+enum CreateAGoalErrors: LocalizedError {
+    case emptyTitle
+    case emptyFrequency
+    
+    var errorDescription: String? {
+        switch self {
+        case .emptyTitle:
+            return "Título obrigatório"
+        case .emptyFrequency:
+            return "Pelo menos um campo de frequência deve ser preenchido"
+        }
+    }
+}
+
 struct NewGoalViewModel {
     
+    var onEmptyFrequency: (() -> Void)?
+    var onEmptyTitle: (() -> Void)?
+    
+    var onSuccesfulSave: ((_ data: HabitData) -> Void)?
+    
     func validadeFields(title: String, description: String, days: [String: String], deadline: Int, time: String?) {
-        if days.isEmpty && deadline == 0 {
-            // alert: vc precisa preencher pelo menos um campo de frequencia
-            print("IMPOSSIVEL")
+        func checkIfFrequencyItsEmpty() throws -> ([String: String], Int) {
+            do {
+                if days.isEmpty && deadline == 0 {
+                    onEmptyFrequency?()
+                    throw CreateAGoalErrors.emptyFrequency
+                }
+            } catch {
+                throw error
+            }
+            
+            return (days, deadline)
         }
         
-        if title.isEmpty {
-            // alert
-            print("Atenção. Hábitos devem conter um título")
+        func checkIfTitleItsEmpty() throws -> String {
+            do {
+                if title.isEmpty {
+                    onEmptyTitle?()
+                    throw CreateAGoalErrors.emptyTitle
+                }
+            } catch {
+                throw error
+            }
+            
+            return title
         }
         
-        print(title, description, days, deadline, time)
+        
+        guard let deadlineUnwrapped = try? checkIfFrequencyItsEmpty() else { return }
+        guard let titleUnwrapped = try? checkIfTitleItsEmpty() else { return }
+        
+        var habit = HabitData()
+        habit.title = titleUnwrapped
+        habit.description = description
+        habit.time = time
+        habit.daysSelected = deadlineUnwrapped.0
+        habit.deadline = deadlineUnwrapped.1
+        
+        // if start new flow, pass info forward; otherwise save right here in firebase
+        onSuccesfulSave?(habit)
     }
 }

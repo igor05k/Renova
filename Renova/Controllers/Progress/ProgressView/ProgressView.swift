@@ -1,14 +1,13 @@
 //
-//  HomeView.swift
+//  ProgressView.swift
 //  Renova
 //
-//  Created by Igor Fernandes on 23/01/23.
+//  Created by Igor Fernandes on 27/01/23.
 //
 
 import UIKit
 
-class HomeView: UIView {
-    
+class ProgressView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .viewBackgroundColor

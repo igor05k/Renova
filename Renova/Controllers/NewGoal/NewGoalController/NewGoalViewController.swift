@@ -7,7 +7,7 @@
     
 import UIKit
 
-class NewGoalViewController: UIViewController {
+class NewGoalViewController: BaseViewController {
     // goal name
     // description (optional)
     // frequency
@@ -49,16 +49,47 @@ class NewGoalViewController: UIViewController {
         configTableView()
         habit = HabitData()
         setTableViewConstraints()
+        setupBindings()
+        title = "Novo hábito"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .viewBackgroundColor
+        appearance.shadowColor = .clear
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = .viewBackgroundColor
+        tabBarItem.standardAppearance = tabBarAppearance
+        tabBarItem.scrollEdgeAppearance = tabBarItem.standardAppearance
+    }
+    
+    
+    func setupBindings() {
+        viewmodel.onEmptyFrequency = {
+            Alert.showDefaultAlert(title: "Atenção", message: "Pelo menos um campo de frequência deve ser preenchido", vc: self)
+        }
+        
+        viewmodel.onEmptyTitle = {
+            Alert.showDefaultAlert(title: "Atenção", message: "Título obrigatório", vc: self)
+        }
     }
     
     func setTableViewConstraints() {
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }
@@ -77,6 +108,8 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
                 self?.habit?.description = description
             }
             
+            cell.backgroundColor = .backgroundCell
+            
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.identifier, for: indexPath) as? FrequencyTableViewCell else { return UITableViewCell() }
@@ -89,6 +122,8 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
                 self?.habit?.deadline = days
             }
             
+            cell.backgroundColor = .backgroundCell
+            
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath) as? ReminderTableViewCell else { return UITableViewCell() }
@@ -96,6 +131,8 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.notificationAlarmChanged = { [weak self] time in
                 self?.habit?.time = time
             }
+            
+            cell.backgroundColor = .backgroundCell
             
             return cell
         case 3:
