@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum HomeSections: Int {
+    case averageProgress = 0
+    case todaysHabit = 1
+}
+
 class HomeViewController: BaseViewController {
     
     var screen: HomeView?
@@ -53,6 +58,7 @@ class HomeViewController: BaseViewController {
         tableView.backgroundColor = .viewBackgroundColor
         tableView.separatorStyle = .none
         tableView.register(ProgressCardTableViewCell.nib(), forCellReuseIdentifier: ProgressCardTableViewCell.identifier)
+        tableView.register(TodaysHabitTableViewCell.nib(), forCellReuseIdentifier: TodaysHabitTableViewCell.identifier)
     }
     
     func currentDate() -> String {
@@ -80,15 +86,48 @@ class HomeViewController: BaseViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProgressCardTableViewCell.identifier, for: indexPath)
-        return cell
+        switch indexPath.section {
+        case HomeSections.averageProgress.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ProgressCardTableViewCell.identifier, for: indexPath)
+            return cell
+        case HomeSections.todaysHabit.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitTableViewCell.identifier, for: indexPath)
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int { 2 }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        150
+        switch indexPath.section {
+        case HomeSections.averageProgress.rawValue:
+            return 150
+        case HomeSections.todaysHabit.rawValue:
+            return 300
+        default:
+            return 1
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case HomeSections.todaysHabit.rawValue:
+            return "Pra hoje"
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = .black
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 32)
+        header.textLabel?.frame = header.bounds
     }
 }
