@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 enum DaysOfTheWeek: String, CaseIterable {
     case monday = "SEG"
@@ -52,10 +53,12 @@ class FrequencyTableViewCell: UITableViewCell {
                                                "DOM": "Domingo"]
     
     var daysSelected: ((_ days: [String: String]) -> Void)?
-    var deadlineSelected: ((_ days: Int) -> Void)?
+    var deadlineSelected: ((_ days: Date?) -> Void)?
+    var numberOfDaysChosen: ((_ days: Int) -> Void)?
     
     /// this is needed for track the number of days selected in the deadline so when the user left the deadline segment and then come back, the number still there.
     private var numberOfDays: Int = 0
+    private var deadline: Date?
     
     static let identifier: String = String(describing: FrequencyTableViewCell.self)
     
@@ -110,12 +113,14 @@ class FrequencyTableViewCell: UITableViewCell {
         // convert to days
         let days = Int(timeRemaining / 86400)
         numberOfDays = days
+        deadline = sender.date
         
+        // é necessário enviar o sender.date para salvar como timestamp no firebase
         if days == 1 {
-            deadlineSelected?(days)
+            deadlineSelected?(sender.date)
             deadlineLabel.text = "Tempo restante \n\(days) dia"
         } else {
-            deadlineSelected?(days)
+            deadlineSelected?(sender.date)
             deadlineLabel.text = "Tempo restante \n\(days) dias"
         }
     }
@@ -128,7 +133,8 @@ class FrequencyTableViewCell: UITableViewCell {
             sliderContainerView.isHidden = true
             
             // reseta os valores quando muda de segmento
-            deadlineSelected?(0)
+            numberOfDaysChosen?(0)
+            deadlineSelected?(nil)
             daysSelected?(daysOfTheWeekDict)
         case SegmentSelected.deadline.rawValue:
             collectionView.isHidden = true
@@ -136,7 +142,8 @@ class FrequencyTableViewCell: UITableViewCell {
             sliderContainerView.isHidden = false
             
             // reseta os valores quando muda de segmento
-            deadlineSelected?(numberOfDays)
+            numberOfDaysChosen?(numberOfDays)
+            deadlineSelected?(deadline)
             daysSelected?([:])
         default:
             break

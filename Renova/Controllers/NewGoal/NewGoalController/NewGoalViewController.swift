@@ -139,8 +139,8 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
                 self?.habit.daysSelected = days
             }
             
-            cell.deadlineSelected = { [weak self] days in
-                self?.habit.deadline = days
+            cell.deadlineSelected = { [weak self] date in
+                self?.habit.deadline = date
             }
             
             cell.backgroundColor = .backgroundCell
@@ -169,10 +169,10 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             
                 cell.didTapCreateHabit = { [weak self] in
                     if let self {
-                        self.viewmodel.validadeFields(title: self.habit.title,
+                        self.viewmodel.createNewHabit(title: self.habit.title,
                                                        description: self.habit.description,
                                                        days: self.habit.daysSelected,
-                                                       deadline: self.habit.deadline,
+                                                       deadline: self.habit.deadline ?? nil,
                                                        time: self.habit.time ?? "Nenhum timer",
                                                        habitImage: self.habit.habitImage)
                     }

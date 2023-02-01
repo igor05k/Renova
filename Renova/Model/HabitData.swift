@@ -14,14 +14,14 @@ struct HabitData {
     var description: String
     var habitImage: String
     var daysSelected: [String: String]
-    var deadline: Int
+    var deadline: Date?
     var time: String? = "No notifications"
     
     init() {
         self.title = ""
         self.description = ""
         self.habitImage = ""
-        self.deadline = 0
+        self.deadline = nil
         self.daysSelected = ["SEG": "Segunda",
                              "TER": "Terça",
                              "QUA": "Quarta",
