@@ -10,6 +10,7 @@ import UIKit
 enum HomeSections: Int {
     case averageProgress = 0
     case todaysHabit = 1
+    case weeksHabit = 2
 }
 
 class HomeViewController: BaseViewController {
@@ -55,10 +56,13 @@ class HomeViewController: BaseViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.sectionHeaderTopPadding = 0
         tableView.backgroundColor = .viewBackgroundColor
         tableView.separatorStyle = .none
         tableView.register(ProgressCardTableViewCell.nib(), forCellReuseIdentifier: ProgressCardTableViewCell.identifier)
         tableView.register(TodaysHabitTableViewCell.nib(), forCellReuseIdentifier: TodaysHabitTableViewCell.identifier)
+        tableView.register(WeeksHabitTableViewCell.nib(), forCellReuseIdentifier: WeeksHabitTableViewCell.identifier)
     }
     
     func currentDate() -> String {
@@ -93,16 +97,29 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case HomeSections.todaysHabit.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitTableViewCell.identifier, for: indexPath)
             return cell
+        case HomeSections.weeksHabit.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: WeeksHabitTableViewCell.identifier, for: indexPath)
+            return cell
         default:
             return UITableViewCell()
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int { 2 }
+    func numberOfSections(in tableView: UITableView) -> Int { 3 }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case HomeSections.weeksHabit.rawValue:
+            return 6
+        default:
+            return 1
+        }
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
@@ -111,7 +128,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case HomeSections.todaysHabit.rawValue:
             return 300
         default:
-            return 1
+            return 100
         }
     }
     
@@ -119,6 +136,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case HomeSections.todaysHabit.rawValue:
             return "Pra hoje"
+        case HomeSections.weeksHabit.rawValue:
+            return "Durante a semana"
         default:
             return nil
         }

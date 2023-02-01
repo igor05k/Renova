@@ -19,7 +19,9 @@ class MainTabBarController: UITabBarController {
         configItems()
         tabBar.backgroundColor = .backgroundSecondary
         tabBar.tintColor = .iconColor
-        tabBar.barTintColor = .iconColor
+        tabBar.barTintColor = .backgroundSecondary
+        tabBar.isTranslucent = false
+
     }
     
     func configControllers() {

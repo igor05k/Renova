@@ -7,12 +7,15 @@
     
 import UIKit
 
+enum NewGoalSections: Int {
+    case details = 0
+    case frequency = 1
+    case reminder = 2
+    case habitImages = 3
+    case saveButton = 4
+}
+
 class NewGoalViewController: BaseViewController {
-    // goal name
-    // description (optional)
-    // frequency
-    // notifications switch on off
-    // deadline (optional)
     
     var habit: HabitData?
     private var viewmodel: NewGoalViewModel = NewGoalViewModel()
@@ -35,12 +38,14 @@ class NewGoalViewController: BaseViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.layer.cornerRadius = 10
+        tableView.showsVerticalScrollIndicator = false
         tableView.clipsToBounds = true
         tableView.sectionHeaderTopPadding = 0
         tableView.backgroundColor = .viewBackgroundColor
         tableView.register(NewGoalDetailsTableViewCell.nib(), forCellReuseIdentifier: NewGoalDetailsTableViewCell.identifier)
         tableView.register(FrequencyTableViewCell.nib(), forCellReuseIdentifier: FrequencyTableViewCell.identifier)
         tableView.register(ReminderTableViewCell.nib(), forCellReuseIdentifier: ReminderTableViewCell.identifier)
+        tableView.register(ChooseImageTableViewCell.nib(), forCellReuseIdentifier: ChooseImageTableViewCell.identifier)
         tableView.register(SaveGoalTableViewCell.nib(), forCellReuseIdentifier: SaveGoalTableViewCell.identifier)
     }
     
@@ -97,7 +102,7 @@ class NewGoalViewController: BaseViewController {
 extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0:
+        case NewGoalSections.details.rawValue:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewGoalDetailsTableViewCell.identifier, for: indexPath) as? NewGoalDetailsTableViewCell else { return UITableViewCell() }
             
             cell.didChangeTitle = { [weak self] title in
@@ -111,7 +116,7 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.backgroundColor = .backgroundCell
             
             return cell
-        case 1:
+        case NewGoalSections.frequency.rawValue:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.identifier, for: indexPath) as? FrequencyTableViewCell else { return UITableViewCell() }
             
             cell.daysSelected = { [weak self] days in
@@ -125,7 +130,7 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.backgroundColor = .backgroundCell
             
             return cell
-        case 2:
+        case NewGoalSections.reminder.rawValue:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath) as? ReminderTableViewCell else { return UITableViewCell() }
             
             cell.notificationAlarmChanged = { [weak self] time in
@@ -135,7 +140,11 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.backgroundColor = .backgroundCell
             
             return cell
-        case 3:
+        case NewGoalSections.habitImages.rawValue:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ChooseImageTableViewCell.identifier, for: indexPath) as? ChooseImageTableViewCell else { return UITableViewCell() }
+           
+            return cell
+        case NewGoalSections.saveButton.rawValue:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SaveGoalTableViewCell.identifier, for: indexPath) as? SaveGoalTableViewCell else { return SaveGoalTableViewCell() }
             
                 cell.didTapCreateHabit = { [weak self] in
@@ -156,23 +165,25 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int { 4 }
+    func numberOfSections(in tableView: UITableView) -> Int { 5 }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case 0:
+        case NewGoalSections.details.rawValue:
             return 160
-        case 1:
+        case NewGoalSections.frequency.rawValue:
             return 130
-        case 2:
+        case NewGoalSections.reminder.rawValue:
             return 110
+        case NewGoalSections.habitImages.rawValue:
+            return 100
         default:
             return 50
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 3 {
+        if section == NewGoalSections.saveButton.rawValue {
             let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 10))
             headerView.backgroundColor = .clear
             return headerView
@@ -183,12 +194,14 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0:
+        case NewGoalSections.details.rawValue:
             return "Detalhes"
-        case 1:
+        case NewGoalSections.frequency.rawValue:
             return "Frequência"
-        case 2:
+        case NewGoalSections.reminder.rawValue:
             return "Lembretes"
+        case NewGoalSections.habitImages.rawValue:
+            return "Aparência"
         default:
             return nil
         }
