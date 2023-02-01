@@ -20,7 +20,7 @@ class HabitImagesCollectionViewCell: UICollectionViewCell {
     
     var habitImages: HabitImages = HabitImages()
     
-    var didTapHabitImageView: ((_ cell: UICollectionViewCell, _ isSelectedImage: Bool) -> Void)?
+    var didTapHabitImageView: ((_ cell: UICollectionViewCell) -> Void)?
     
     static let identifier: String = String(describing: HabitImagesCollectionViewCell.self)
     
@@ -43,8 +43,7 @@ class HabitImagesCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func imageTapped() {
-        isSelectedImage.toggle()
-        didTapHabitImageView?(self, isSelectedImage)
+        didTapHabitImageView?(self)
     }
     
     func setupCell(habitImage: HabitImages) {
