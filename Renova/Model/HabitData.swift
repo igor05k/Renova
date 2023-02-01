@@ -7,9 +7,12 @@
 
 import Foundation
 
+// titulo, frequencia (daysSelected e deadline) e imagem obrigatorios
+
 struct HabitData {
     var title: String = ""
     var description: String?
+    var habitImage: String = ""
     var daysSelected: [String: String] = ["SEG": "Segunda",
                                           "TER": "Terça",
                                           "QUA": "Quarta",

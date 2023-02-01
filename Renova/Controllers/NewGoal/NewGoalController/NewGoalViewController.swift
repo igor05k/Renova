@@ -79,11 +79,15 @@ class NewGoalViewController: BaseViewController {
     
     func setupBindings() {
         viewmodel.onEmptyFrequency = {
-            Alert.showDefaultAlert(title: "Atenção", message: "Pelo menos um campo de frequência deve ser preenchido", vc: self)
+            Alert.showDefaultAlert(title: "Atenção", message: CreateAGoalErrors.emptyFrequency.localizedDescription, vc: self)
         }
         
         viewmodel.onEmptyTitle = {
-            Alert.showDefaultAlert(title: "Atenção", message: "Título obrigatório", vc: self)
+            Alert.showDefaultAlert(title: "Atenção", message: CreateAGoalErrors.emptyTitle.localizedDescription, vc: self)
+        }
+        
+        viewmodel.onEmptyHabitImage = {
+            Alert.showDefaultAlert(title: "Atenção", message: CreateAGoalErrors.emptyHabitImage.localizedDescription, vc: self)
         }
     }
     
@@ -142,6 +146,10 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case NewGoalSections.habitImages.rawValue:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ChooseImageTableViewCell.identifier, for: indexPath) as? ChooseImageTableViewCell else { return UITableViewCell() }
+            
+            cell.imageChosenByUser = { [weak self] habitImage in
+                self?.habit?.habitImage = habitImage
+            }
            
             return cell
         case NewGoalSections.saveButton.rawValue:
@@ -152,7 +160,8 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
                                                    description: self?.habit?.description ?? "Nenhuma descrição",
                                                    days: self?.habit?.daysSelected ?? [:],
                                                    deadline: self?.habit?.deadline ?? 0,
-                                                   time: self?.habit?.time ?? "No timer")
+                                                   time: self?.habit?.time ?? "Nenhum timer",
+                                                   habitImage: self?.habit?.habitImage ?? "Nenhuma imagem")
                 }
             
             return cell

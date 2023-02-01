@@ -20,6 +20,8 @@ class ChooseImageTableViewCell: UITableViewCell {
     
     private var selectedCellIndex: Int?
     
+    var imageChosenByUser: ((_ image: String) -> Void)?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     static let identifier: String = String(describing: ChooseImageTableViewCell.self)
@@ -48,12 +50,13 @@ extension ChooseImageTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         
         cell.setupCell(habitImage: habitImages[indexPath.row])
         
+        
         /// closure para pegar o tap na célula de imagem para o hábito
         cell.didTapHabitImageView = { [weak self] cellSelected in
             guard let self else { return }
             guard let index = collectionView.indexPath(for: cellSelected) else { return }
             var selectedItem = self.habitImages[index.row]
-
+            
             // como nenhum item por padrão virá como true, ele não irá cair na primeira condicional
             // logo irá para o else e setará o alpha para 1
             if selectedItem.isSelected == true {
@@ -75,7 +78,12 @@ extension ChooseImageTableViewCell: UICollectionViewDelegate, UICollectionViewDa
                 self.selectedCellIndex = index.row
             }
 
-            print(selectedItem)
+            // update the array with the new property set to true
+            self.habitImages[index.row] = selectedItem
+            
+            if let selectedHabitImage = self.habitImages.filter({ $0.isSelected == true }).first {
+                self.imageChosenByUser?(selectedHabitImage.image)
+            }
         }
 
         return cell
