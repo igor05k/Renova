@@ -7,21 +7,27 @@
 
 import Foundation
 
-// titulo, frequencia (daysSelected e deadline) e imagem obrigatorios
+// somente timer (notificacoes) opcional
 
 struct HabitData {
-    var title: String = ""
-    var description: String?
-    var habitImage: String = ""
-    var daysSelected: [String: String] = ["SEG": "Segunda",
-                                          "TER": "Terça",
-                                          "QUA": "Quarta",
-                                          "QUI": "Quinta",
-                                          "SEX": "Sexta",
-                                          "SÁB": "Sábado",
-                                          "DOM": "Domingo"]
-    var deadline: Int = 0
+    var title: String
+    var description: String
+    var habitImage: String
+    var daysSelected: [String: String]
+    var deadline: Int
     var time: String? = "No notifications"
     
-    init() {}
+    init() {
+        self.title = ""
+        self.description = ""
+        self.habitImage = ""
+        self.deadline = 0
+        self.daysSelected = ["SEG": "Segunda",
+                             "TER": "Terça",
+                             "QUA": "Quarta",
+                             "QUI": "Quinta",
+                             "SEX": "Sexta",
+                             "SÁB": "Sábado",
+                             "DOM": "Domingo"]
+    }
 }

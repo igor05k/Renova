@@ -17,7 +17,7 @@ class NewGoalDetailsTableViewCell: UITableViewCell {
     static let identifier: String = String(describing: NewGoalDetailsTableViewCell.self)
     
     var didChangeTitle: ((_ title: String) -> Void)?
-    var didChangeDescription: ((_ title: String?) -> Void)?
+    var didChangeDescription: ((_ title: String) -> Void)?
     
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
@@ -39,7 +39,7 @@ class NewGoalDetailsTableViewCell: UITableViewCell {
         titleTextField.layer.cornerRadius = 5
         
         descriptionLabel.text = "Descrição"
-        descriptionTextField.placeholder = "Treinar e correr todos os dias (opcional)"
+        descriptionTextField.placeholder = "Treinar e correr todos os dias"
         descriptionTextField.layer.borderWidth = 1
         descriptionTextField.layer.borderColor = CGColor(red: 128 / 255, green: 120 / 255, blue: 115 / 255, alpha: 1)
         descriptionTextField.layer.cornerRadius = 5
@@ -57,7 +57,9 @@ extension NewGoalDetailsTableViewCell: UITextFieldDelegate {
                 didChangeTitle?(title)
             }
         } else if textField == descriptionTextField {
-            didChangeDescription?(textField.text)
+            if let description = textField.text {
+                didChangeDescription?(description)
+            }
         }
     }
     

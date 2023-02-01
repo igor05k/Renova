@@ -17,7 +17,7 @@ enum NewGoalSections: Int {
 
 class NewGoalViewController: BaseViewController {
     
-    var habit: HabitData?
+    private var habit: HabitData
     private var viewmodel: NewGoalViewModel = NewGoalViewModel()
     
     lazy var tableView: UITableView = {
@@ -26,11 +26,20 @@ class NewGoalViewController: BaseViewController {
         return table
     }()
     
-    var screen: NewGoalView?
+    private var screen: NewGoalView?
     
     override func loadView() {
         screen = NewGoalView()
         view = screen
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        habit = HabitData()
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func configTableView() {
@@ -52,7 +61,6 @@ class NewGoalViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        habit = HabitData()
         setTableViewConstraints()
         setupBindings()
         title = "Novo hábito"
@@ -89,6 +97,10 @@ class NewGoalViewController: BaseViewController {
         viewmodel.onEmptyHabitImage = {
             Alert.showDefaultAlert(title: "Atenção", message: CreateAGoalErrors.emptyHabitImage.localizedDescription, vc: self)
         }
+        
+        viewmodel.onEmptyDescription = {
+            Alert.showDefaultAlert(title: "Atenção", message: CreateAGoalErrors.emptyDescription.localizedDescription, vc: self)
+        }
     }
     
     func setTableViewConstraints() {
@@ -110,11 +122,11 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: NewGoalDetailsTableViewCell.identifier, for: indexPath) as? NewGoalDetailsTableViewCell else { return UITableViewCell() }
             
             cell.didChangeTitle = { [weak self] title in
-                self?.habit?.title = title
+                self?.habit.title = title
             }
             
             cell.didChangeDescription = { [weak self] description in
-                self?.habit?.description = description
+                self?.habit.description = description
             }
             
             cell.backgroundColor = .backgroundCell
@@ -124,11 +136,11 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FrequencyTableViewCell.identifier, for: indexPath) as? FrequencyTableViewCell else { return UITableViewCell() }
             
             cell.daysSelected = { [weak self] days in
-                self?.habit?.daysSelected = days
+                self?.habit.daysSelected = days
             }
             
             cell.deadlineSelected = { [weak self] days in
-                self?.habit?.deadline = days
+                self?.habit.deadline = days
             }
             
             cell.backgroundColor = .backgroundCell
@@ -138,7 +150,7 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReminderTableViewCell.identifier, for: indexPath) as? ReminderTableViewCell else { return UITableViewCell() }
             
             cell.notificationAlarmChanged = { [weak self] time in
-                self?.habit?.time = time
+                self?.habit.time = time
             }
             
             cell.backgroundColor = .backgroundCell
@@ -148,7 +160,7 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ChooseImageTableViewCell.identifier, for: indexPath) as? ChooseImageTableViewCell else { return UITableViewCell() }
             
             cell.imageChosenByUser = { [weak self] habitImage in
-                self?.habit?.habitImage = habitImage
+                self?.habit.habitImage = habitImage
             }
            
             return cell
@@ -156,12 +168,14 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SaveGoalTableViewCell.identifier, for: indexPath) as? SaveGoalTableViewCell else { return SaveGoalTableViewCell() }
             
                 cell.didTapCreateHabit = { [weak self] in
-                    self?.viewmodel.validadeFields(title: self?.habit?.title ?? "Nenhum título",
-                                                   description: self?.habit?.description ?? "Nenhuma descrição",
-                                                   days: self?.habit?.daysSelected ?? [:],
-                                                   deadline: self?.habit?.deadline ?? 0,
-                                                   time: self?.habit?.time ?? "Nenhum timer",
-                                                   habitImage: self?.habit?.habitImage ?? "Nenhuma imagem")
+                    if let self {
+                        self.viewmodel.validadeFields(title: self.habit.title,
+                                                       description: self.habit.description,
+                                                       days: self.habit.daysSelected,
+                                                       deadline: self.habit.deadline,
+                                                       time: self.habit.time ?? "Nenhum timer",
+                                                       habitImage: self.habit.habitImage)
+                    }
                 }
             
             return cell
