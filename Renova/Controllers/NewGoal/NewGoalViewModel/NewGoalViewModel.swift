@@ -35,13 +35,12 @@ struct NewGoalViewModel {
     var onEmptyHabitImage: (() -> Void)?
     var onEmptyDescription: (() -> Void)?
     
-//    var onSuccesfulSave: ((_ data: HabitData) -> Void)?
     
-    func createNewHabit(title: String, description: String, days: [String: String], deadline: Date?, time: String?, habitImage: String) {
+    func createNewHabit(title: String, description: String, days: [String: String]?, deadline: Date?, time: String?, habitImage: String) {
 
         guard let titleUnwrapped = try? checkIfTitleItsEmpty(title) else { return }
         guard let descUnwrapped = try? checkIfDescriptionItsEmpty(description) else { return }
-        guard let deadlineUnwrapped = try? checkIfFrequencyItsEmpty(days, deadline ?? nil) else { return }
+        guard let deadlineUnwrapped = try? checkIfFrequencyItsEmpty(days ?? nil, deadline ?? nil) else { return }
         guard let imageUnwrapped = try? checkIfHabitImageItsEmpty(habitImage) else { return }
         
         var habit = HabitData()
@@ -53,40 +52,33 @@ struct NewGoalViewModel {
         habit.habitImage = imageUnwrapped
         
         print(habit)
-        
-        // if start new flow, pass info forward; otherwise save right here in firebase
-//        onSuccesfulSave?(habit)
+        saveNewHabitData(titleUnwrapped, descUnwrapped, daysOfTheWeek: deadlineUnwrapped.0 ?? nil, deadline: deadlineUnwrapped.1 ?? nil)
         
     }
     
     // MARK: Firebase
     
     /// save data into firestore
-    func saveNewHabitData(_ name: String, _ description: String) {
+    func saveNewHabitData(_ name: String, _ description: String, daysOfTheWeek: [String: String]?, deadline: Date?) {
         let db = Firestore.firestore()
         
-        let newHabit = ["name": "Novo Exercicio", "description": "Caminhada", "startDate": "2023-01-01", "endDate": "2023-12-31"]
-        // create a new collection of goals/add a new goal into the collection
-        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("goals").document().setData(newHabit)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
         
+        let currentDateString = formatter.string(from: Date())
+
+        let endDate: Timestamp?
         
-        // create progress collection/ access goal collection so we can track the specific goal progress
-        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("goals").getDocuments { snapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                for document in snapshot!.documents {
-                    let data = document.data()
-                    
-                    let exerciseName = data["name"] as! String
-                    let date = data["startDate"] as! String
-                    // do something with the data
-                    let progress = ["name": exerciseName, "goalID": document.documentID, "description": "Exercise for 30 minutes every day", "startDate": date, "progress": "30"]
-                    db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("progress").document().setData(progress)
-                    break
-                }
-            }
+        if let deadline {
+            endDate = Timestamp(date: deadline)
+        } else {
+            endDate = nil
         }
+        
+        let newHabit: [String : Any?] = ["name": name, "description": description, "startDate": currentDateString, "endDate": endDate ?? nil, "daysOfTheWeek": daysOfTheWeek]
+        
+        // create a new collection of habits/add a new habit into the collection
+        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").document().setData(newHabit as [String : Any])
     }
     
     
@@ -117,9 +109,9 @@ struct NewGoalViewModel {
         return image
     }
     
-    func checkIfFrequencyItsEmpty(_ days: [String: String], _ deadline: Date?) throws -> ([String: String], Date?) {
+    func checkIfFrequencyItsEmpty(_ days: [String: String]?, _ deadline: Date?) throws -> ([String: String]?, Date?) {
         do {
-            if days.isEmpty && deadline == nil {
+            if days == nil && deadline == nil {
                 onEmptyFrequency?()
                 throw CreateAGoalErrors.emptyFrequency
             }

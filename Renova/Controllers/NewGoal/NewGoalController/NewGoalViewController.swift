@@ -64,6 +64,18 @@ class NewGoalViewController: BaseViewController {
         setTableViewConstraints()
         setupBindings()
         title = "Novo hábito"
+        
+//        let dayOfWeekInt = 7
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "EEEE"
+//        let dayOfWeekString = dateFormatter.weekdaySymbols[dayOfWeekInt % 7]
+//        print(dayOfWeekString)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+
+        let currentDateString = formatter.string(from: Date())
+        print(currentDateString)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -171,7 +183,7 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
                     if let self {
                         self.viewmodel.createNewHabit(title: self.habit.title,
                                                        description: self.habit.description,
-                                                       days: self.habit.daysSelected,
+                                                      days: self.habit.daysSelected ?? nil,
                                                        deadline: self.habit.deadline ?? nil,
                                                        time: self.habit.time ?? "Nenhum timer",
                                                        habitImage: self.habit.habitImage)

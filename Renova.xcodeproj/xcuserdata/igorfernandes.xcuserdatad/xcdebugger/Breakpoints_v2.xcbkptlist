@@ -14,8 +14,8 @@
             filePath = "Renova/Controllers/NewGoal/NewGoalViewModel/NewGoalViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "createNewHabit(title:description:days:deadline:time:habitImage:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Renova/Controllers/NewGoal/NewGoalViewModel/NewGoalViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146">
+            startingLineNumber = "138"
+            endingLineNumber = "138">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -256,6 +256,54 @@
             endingLineNumber = "78"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15D99ABE-73DF-4784-AF23-A0B342FDF010"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Renova/Controllers/NewGoal/NewGoalViewModel/NewGoalViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "createNewHabit(title:description:days:deadline:time:habitImage:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "15D99ABE-73DF-4784-AF23-A0B342FDF010 - 15fbac4113e13485"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Renova.NewGoalViewModel.createNewHabit(title: Swift.String, description: Swift.String, days: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, deadline: Swift.Optional&lt;Foundation.Date&gt;, time: Swift.Optional&lt;Swift.String&gt;, habitImage: Swift.String) -&gt; ()"
+                  moduleName = "Renova"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorfernandes/Desktop/Renova/Renova/Controllers/NewGoal/NewGoalViewModel/NewGoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "2687">
+               </Location>
+               <Location
+                  uuid = "15D99ABE-73DF-4784-AF23-A0B342FDF010 - 15fbac4113e13485"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Renova.NewGoalViewModel.createNewHabit(title: Swift.String, description: Swift.String, days: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.String&gt;&gt;, deadline: Swift.Optional&lt;Foundation.Date&gt;, time: Swift.Optional&lt;Swift.String&gt;, habitImage: Swift.String) -&gt; ()"
+                  moduleName = "Renova"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igorfernandes/Desktop/Renova/Renova/Controllers/NewGoal/NewGoalViewModel/NewGoalViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "2974">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

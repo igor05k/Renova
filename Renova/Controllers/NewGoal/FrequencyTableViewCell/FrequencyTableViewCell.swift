@@ -52,11 +52,12 @@ class FrequencyTableViewCell: UITableViewCell {
                                                "SÁB": "Sábado",
                                                "DOM": "Domingo"]
     
-    var daysSelected: ((_ days: [String: String]) -> Void)?
+    /// os dois segmentos (dias da semana e prazo) precisam ser opcionais pois somente um dos dois será selecionado. porém, um deve ser escolhido
+    var daysSelected: ((_ days: [String: String]?) -> Void)?
     var deadlineSelected: ((_ days: Date?) -> Void)?
     var numberOfDaysChosen: ((_ days: Int) -> Void)?
     
-    /// this is needed for track the number of days selected in the deadline so when the user left the deadline segment and then come back, the number still there.
+    /// isso é necessário para rastrear o número de dias selecionado no prazo porque assim, quando o usuário sai do segmento de prazo e volta, o número ainda está lá.
     private var numberOfDays: Int = 0
     private var deadline: Date?
     
@@ -90,7 +91,7 @@ class FrequencyTableViewCell: UITableViewCell {
     }
     
     private func setupSegmentedControl() {
-        segmentedControl.setTitle("Diariamente", forSegmentAt: 0)
+        segmentedControl.setTitle("Dias da semana", forSegmentAt: 0)
         segmentedControl.setTitle("Prazo", forSegmentAt: 1)
         
         segmentedControl.backgroundColor = .backgroundSecondary
@@ -98,7 +99,6 @@ class FrequencyTableViewCell: UITableViewCell {
         
         datePicker.isHidden = true
         sliderContainerView.isHidden = true
-        
         
         let tomorrow = Date(timeIntervalSinceNow: 90000)
         datePicker.minimumDate = tomorrow
@@ -144,7 +144,7 @@ class FrequencyTableViewCell: UITableViewCell {
             // reseta os valores quando muda de segmento
             numberOfDaysChosen?(numberOfDays)
             deadlineSelected?(deadline)
-            daysSelected?([:])
+            daysSelected?(nil)
         default:
             break
         }
