@@ -35,6 +35,7 @@ struct NewGoalViewModel {
     var onEmptyHabitImage: (() -> Void)?
     var onEmptyDescription: (() -> Void)?
     
+    var onSuccessfulSaveHabit: ((_ data: HabitData) -> Void)?
     
     func createNewHabit(title: String, description: String, days: [String: String]?, deadline: Date?, time: String?, habitImage: String) {
 
@@ -42,6 +43,8 @@ struct NewGoalViewModel {
         guard let descUnwrapped = try? checkIfDescriptionItsEmpty(description) else { return }
         guard let deadlineUnwrapped = try? checkIfFrequencyItsEmpty(days ?? nil, deadline ?? nil) else { return }
         guard let imageUnwrapped = try? checkIfHabitImageItsEmpty(habitImage) else { return }
+       
+        saveNewHabitData(titleUnwrapped, descUnwrapped, daysOfTheWeek: deadlineUnwrapped.0 ?? nil, deadline: deadlineUnwrapped.1 ?? nil, time: time, habitImage: imageUnwrapped)
         
         var habit = HabitData()
         habit.title = titleUnwrapped
@@ -51,15 +54,13 @@ struct NewGoalViewModel {
         habit.deadline = deadlineUnwrapped.1
         habit.habitImage = imageUnwrapped
         
-        print(habit)
-        saveNewHabitData(titleUnwrapped, descUnwrapped, daysOfTheWeek: deadlineUnwrapped.0 ?? nil, deadline: deadlineUnwrapped.1 ?? nil)
-        
+        onSuccessfulSaveHabit?(habit)
     }
     
     // MARK: Firebase
     
     /// save data into firestore
-    func saveNewHabitData(_ name: String, _ description: String, daysOfTheWeek: [String: String]?, deadline: Date?) {
+    func saveNewHabitData(_ name: String, _ description: String, daysOfTheWeek: [String: String]?, deadline: Date?, time: String?, habitImage: String) {
         let db = Firestore.firestore()
         
         let formatter = DateFormatter()
@@ -67,6 +68,8 @@ struct NewGoalViewModel {
         
         let currentDateString = formatter.string(from: Date())
 
+        // isso é necessario pois caso o deadline nao for setado, ele irá como nulo para o firebase
+        // + o parametro date do timestamp não aceita nil.
         let endDate: Timestamp?
         
         if let deadline {
@@ -75,10 +78,10 @@ struct NewGoalViewModel {
             endDate = nil
         }
         
-        let newHabit: [String : Any?] = ["name": name, "description": description, "startDate": currentDateString, "endDate": endDate ?? nil, "daysOfTheWeek": daysOfTheWeek]
+        let newHabit: [String : Any?] = ["name": name, "description": description, "startDate": currentDateString, "endDate": endDate ?? nil, "daysOfTheWeek": daysOfTheWeek, "alert": time ?? nil, "habitImage": habitImage]
         
         // create a new collection of habits/add a new habit into the collection
-        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").document().setData(newHabit as [String : Any])
+        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").addDocument(data: newHabit as [String : Any])
     }
     
     

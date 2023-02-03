@@ -104,7 +104,7 @@ class ReminderTableViewCell: UITableViewCell {
         blurView.alpha = 1
         blurView.frame = timerPicker.bounds
         isNotificationsOn = false
-        notificationAlarmChanged?("Sem avisos")
+        notificationAlarmChanged?(nil)
     }
     
     @IBAction func notificationsDidChange(_ sender: UISwitch) {

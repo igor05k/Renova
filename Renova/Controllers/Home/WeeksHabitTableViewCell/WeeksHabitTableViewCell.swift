@@ -9,7 +9,7 @@ import UIKit
 
 class WeeksHabitTableViewCell: UITableViewCell {
     
-    let weekDays: [String] = ["S", "T", "Q", "Q", "S", "S", "D"]
+    private let weekDays: [String] = ["S", "T", "Q", "Q", "S", "S", "D"]
     
     @IBOutlet weak var weeksHabitTitleLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -29,11 +29,15 @@ class WeeksHabitTableViewCell: UITableViewCell {
         weeksHabitTitleLabel.text = "Finalizar meu projeto"
     }
     
-    func configCollectionView() {
+    private func configCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .viewBackgroundColor
         collectionView.register(WeekDaysCollectionViewCell.nib(), forCellWithReuseIdentifier: WeekDaysCollectionViewCell.identifier)
+    }
+    
+    func setupCell(title: String) {
+        weeksHabitTitleLabel.text = title
     }
 }
 

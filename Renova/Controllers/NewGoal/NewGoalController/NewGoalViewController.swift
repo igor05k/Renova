@@ -4,7 +4,7 @@
 //
 //  Created by Igor Fernandes on 25/01/23.
 //
-    
+
 import UIKit
 
 enum NewGoalSections: Int {
@@ -19,6 +19,8 @@ class NewGoalViewController: BaseViewController {
     
     private var habit: HabitData
     private var viewmodel: NewGoalViewModel = NewGoalViewModel()
+    
+    var onSuccessfulSaveHabit: ((_ data: HabitData) -> Void)?
     
     lazy var tableView: UITableView = {
         let table = UITableView()
@@ -64,18 +66,6 @@ class NewGoalViewController: BaseViewController {
         setTableViewConstraints()
         setupBindings()
         title = "Novo hábito"
-        
-//        let dayOfWeekInt = 7
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "EEEE"
-//        let dayOfWeekString = dateFormatter.weekdaySymbols[dayOfWeekInt % 7]
-//        print(dayOfWeekString)
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
-
-        let currentDateString = formatter.string(from: Date())
-        print(currentDateString)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +88,8 @@ class NewGoalViewController: BaseViewController {
     
     
     func setupBindings() {
+        
+        // ALERTS
         viewmodel.onEmptyFrequency = {
             Alert.showDefaultAlert(title: "Atenção", message: CreateAGoalErrors.emptyFrequency.localizedDescription, vc: self)
         }
@@ -112,6 +104,12 @@ class NewGoalViewController: BaseViewController {
         
         viewmodel.onEmptyDescription = {
             Alert.showDefaultAlert(title: "Atenção", message: CreateAGoalErrors.emptyDescription.localizedDescription, vc: self)
+        }
+        
+        // PASS DATA BACKWARDS (HOME)
+        viewmodel.onSuccessfulSaveHabit = { [weak self] habit in
+            self?.onSuccessfulSaveHabit?(habit)
+            self?.navigationController?.popToRootViewController(animated: true)
         }
     }
     
@@ -174,21 +172,21 @@ extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.imageChosenByUser = { [weak self] habitImage in
                 self?.habit.habitImage = habitImage
             }
-           
+            
             return cell
         case NewGoalSections.saveButton.rawValue:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: SaveGoalTableViewCell.identifier, for: indexPath) as? SaveGoalTableViewCell else { return SaveGoalTableViewCell() }
             
-                cell.didTapCreateHabit = { [weak self] in
-                    if let self {
-                        self.viewmodel.createNewHabit(title: self.habit.title,
-                                                       description: self.habit.description,
-                                                      days: self.habit.daysSelected ?? nil,
-                                                       deadline: self.habit.deadline ?? nil,
-                                                       time: self.habit.time ?? "Nenhum timer",
-                                                       habitImage: self.habit.habitImage)
-                    }
+            cell.didTapCreateHabit = { [weak self] in
+                if let self {
+                    self.viewmodel.createNewHabit(title: self.habit.title,
+                                                  description: self.habit.description,
+                                                  days: self.habit.daysSelected ?? nil,
+                                                  deadline: self.habit.deadline ?? nil,
+                                                  time: self.habit.time ?? nil,
+                                                  habitImage: self.habit.habitImage)
                 }
+            }
             
             return cell
         default:

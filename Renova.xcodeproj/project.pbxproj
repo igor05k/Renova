@@ -19,15 +19,19 @@
 		82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B59297DDC2C00EAF1E0 /* RegisterView.swift */; };
 		82136B5E297E0B0500EAF1E0 /* RegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */; };
 		82136B5F297E0B0500EAF1E0 /* RegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */; };
+		823A33AC298C4107008355EB /* TodaysHabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A33AB298C4107008355EB /* TodaysHabitModel.swift */; };
+		823A33AF298C4245008355EB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A33AE298C4245008355EB /* HomeViewModel.swift */; };
 		824372E22981B889007EA51B /* FrequencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824372E02981B889007EA51B /* FrequencyTableViewCell.swift */; };
 		824372E32981B889007EA51B /* FrequencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824372E12981B889007EA51B /* FrequencyTableViewCell.xib */; };
 		824B0D3229883BF700FE65CE /* WeeksHabitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824B0D3029883BF700FE65CE /* WeeksHabitTableViewCell.swift */; };
 		824B0D3329883BF700FE65CE /* WeeksHabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824B0D3129883BF700FE65CE /* WeeksHabitTableViewCell.xib */; };
 		824B0D3729883C8C00FE65CE /* WeekDaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824B0D3529883C8C00FE65CE /* WeekDaysCollectionViewCell.swift */; };
 		824B0D3829883C8C00FE65CE /* WeekDaysCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824B0D3629883C8C00FE65CE /* WeekDaysCollectionViewCell.xib */; };
+		82506739298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82506737298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.swift */; };
+		8250673A298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82506738298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.xib */; };
+		8250673D298D690E00850231 /* DuringWeekHabitsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8250673C298D690E00850231 /* DuringWeekHabitsModel.swift */; };
 		827707102980256A00B53595 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8277070F2980256A00B53595 /* MainTabBarController.swift */; };
 		8282C433297E168100E0B4EF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C432297E168100E0B4EF /* RegisterViewModel.swift */; };
-		8282C436297E181F00E0B4EF /* Forms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C435297E181F00E0B4EF /* Forms.swift */; };
 		8282C43B297EC65800E0B4EF /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C439297EC65800E0B4EF /* LoginTableViewCell.swift */; };
 		8282C43C297EC65800E0B4EF /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8282C43A297EC65800E0B4EF /* LoginTableViewCell.xib */; };
 		8282C43E297EDACF00E0B4EF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8282C43D297EDACE00E0B4EF /* GoogleService-Info.plist */; };
@@ -83,15 +87,19 @@
 		82136B59297DDC2C00EAF1E0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		82136B5C297E0B0500EAF1E0 /* RegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewCell.swift; sourceTree = "<group>"; };
 		82136B5D297E0B0500EAF1E0 /* RegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterTableViewCell.xib; sourceTree = "<group>"; };
+		823A33AB298C4107008355EB /* TodaysHabitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysHabitModel.swift; sourceTree = "<group>"; };
+		823A33AE298C4245008355EB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		824372E02981B889007EA51B /* FrequencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyTableViewCell.swift; sourceTree = "<group>"; };
 		824372E12981B889007EA51B /* FrequencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrequencyTableViewCell.xib; sourceTree = "<group>"; };
 		824B0D3029883BF700FE65CE /* WeeksHabitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksHabitTableViewCell.swift; sourceTree = "<group>"; };
 		824B0D3129883BF700FE65CE /* WeeksHabitTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeeksHabitTableViewCell.xib; sourceTree = "<group>"; };
 		824B0D3529883C8C00FE65CE /* WeekDaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysCollectionViewCell.swift; sourceTree = "<group>"; };
 		824B0D3629883C8C00FE65CE /* WeekDaysCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekDaysCollectionViewCell.xib; sourceTree = "<group>"; };
+		82506737298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysHabitEmptyStateTableViewCell.swift; sourceTree = "<group>"; };
+		82506738298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodaysHabitEmptyStateTableViewCell.xib; sourceTree = "<group>"; };
+		8250673C298D690E00850231 /* DuringWeekHabitsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuringWeekHabitsModel.swift; sourceTree = "<group>"; };
 		8277070F2980256A00B53595 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8282C432297E168100E0B4EF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
-		8282C435297E181F00E0B4EF /* Forms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forms.swift; sourceTree = "<group>"; };
 		8282C439297EC65800E0B4EF /* LoginTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
 		8282C43A297EC65800E0B4EF /* LoginTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginTableViewCell.xib; sourceTree = "<group>"; };
 		8282C43D297EDACE00E0B4EF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -234,6 +242,14 @@
 			path = RegisterCell;
 			sourceTree = "<group>";
 		};
+		823A33AD298C4239008355EB /* HomeViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				823A33AE298C4245008355EB /* HomeViewModel.swift */,
+			);
+			path = HomeViewModel;
+			sourceTree = "<group>";
+		};
 		824372DF2981B85A007EA51B /* FrequencyTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +279,24 @@
 			path = WeekDaysCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		82506736298D558D00850231 /* TodaysHabitEmptyState */ = {
+			isa = PBXGroup;
+			children = (
+				82506737298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.swift */,
+				82506738298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.xib */,
+			);
+			path = TodaysHabitEmptyState;
+			sourceTree = "<group>";
+		};
+		8250673B298D5BBB00850231 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				82E0BF56298739D50077FC10 /* TodaysHabitTableViewCell.swift */,
+				82E0BF57298739D50077FC10 /* TodaysHabitTableViewCell.xib */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		8277070E2980253D00B53595 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,8 +308,9 @@
 		8282C434297E180D00E0B4EF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8282C435297E181F00E0B4EF /* Forms.swift */,
 				82F8F21729831323001E911E /* HabitData.swift */,
+				823A33AB298C4107008355EB /* TodaysHabitModel.swift */,
+				8250673C298D690E00850231 /* DuringWeekHabitsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -309,11 +344,12 @@
 		8282C444297EFA4300E0B4EF /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				824B0D2F29883BE500FE65CE /* WeeksHabitTableViewCell */,
-				82E0BF55298739BC0077FC10 /* TodaysHabitTableViewCell */,
-				82B8E44B2986D196006880D5 /* ProgressCardTableViewCell */,
 				8282C448297EFA7F00E0B4EF /* HomeView */,
 				8282C447297EFA6500E0B4EF /* HomeViewController */,
+				823A33AD298C4239008355EB /* HomeViewModel */,
+				82B8E44B2986D196006880D5 /* ProgressCardTableViewCell */,
+				82E0BF55298739BC0077FC10 /* TodaysHabitTableViewCell */,
+				824B0D2F29883BE500FE65CE /* WeeksHabitTableViewCell */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -410,9 +446,9 @@
 		82E0BF55298739BC0077FC10 /* TodaysHabitTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8250673B298D5BBB00850231 /* TableViewCell */,
+				82506736298D558D00850231 /* TodaysHabitEmptyState */,
 				82E0BF5A298805CE0077FC10 /* CollectionViewCell */,
-				82E0BF56298739D50077FC10 /* TodaysHabitTableViewCell.swift */,
-				82E0BF57298739D50077FC10 /* TodaysHabitTableViewCell.xib */,
 			);
 			path = TodaysHabitTableViewCell;
 			sourceTree = "<group>";
@@ -696,6 +732,7 @@
 				824B0D3329883BF700FE65CE /* WeeksHabitTableViewCell.xib in Resources */,
 				82F8F20A2981D2B4001E911E /* DaysOfTheWeekCollectionViewCell.xib in Resources */,
 				82E5AA02297DC44800F249A9 /* Assets.xcassets in Resources */,
+				8250673A298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.xib in Resources */,
 				82E0BF5E298805EE0077FC10 /* TodaysHabitCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -716,6 +753,7 @@
 				82E0BF5D298805EE0077FC10 /* TodaysHabitCollectionViewCell.swift in Sources */,
 				82F8F216298312A2001E911E /* NewGoalViewModel.swift in Sources */,
 				8282C44A297EFA8900E0B4EF /* HomeView.swift in Sources */,
+				8250673D298D690E00850231 /* DuringWeekHabitsModel.swift in Sources */,
 				82F8F22F298459C0001E911E /* ProgressView.swift in Sources */,
 				82F8F23529845A0F001E911E /* SettingsViewController.swift in Sources */,
 				8282C44C297EFB9400E0B4EF /* LoginViewModel.swift in Sources */,
@@ -729,9 +767,11 @@
 				82F8F21829831323001E911E /* HabitData.swift in Sources */,
 				824372E22981B889007EA51B /* FrequencyTableViewCell.swift in Sources */,
 				82F8F231298459DE001E911E /* ProgressViewController.swift in Sources */,
+				823A33AF298C4245008355EB /* HomeViewModel.swift in Sources */,
+				823A33AC298C4107008355EB /* TodaysHabitModel.swift in Sources */,
 				8207D62C298857F3002218B9 /* ChooseImageTableViewCell.swift in Sources */,
 				8282C443297EDDD900E0B4EF /* Alert.swift in Sources */,
-				8282C436297E181F00E0B4EF /* Forms.swift in Sources */,
+				82506739298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.swift in Sources */,
 				82136B58297DDC1800EAF1E0 /* RegisterViewController.swift in Sources */,
 				828A68182981A8250013A4AF /* NewGoalView.swift in Sources */,
 				828A68252981B4720013A4AF /* NewGoalDetailsTableViewCell.swift in Sources */,

@@ -17,6 +17,8 @@ class HomeViewController: BaseViewController {
     
     var screen: HomeView?
     
+    private var viewmodel: HomeViewModel = HomeViewModel()
+    
     override func loadView() {
         screen = HomeView()
         view = screen
@@ -62,6 +64,7 @@ class HomeViewController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.register(ProgressCardTableViewCell.nib(), forCellReuseIdentifier: ProgressCardTableViewCell.identifier)
         tableView.register(TodaysHabitTableViewCell.nib(), forCellReuseIdentifier: TodaysHabitTableViewCell.identifier)
+        tableView.register(TodaysHabitEmptyStateTableViewCell.nib(), forCellReuseIdentifier: TodaysHabitEmptyStateTableViewCell.identifier)
         tableView.register(WeeksHabitTableViewCell.nib(), forCellReuseIdentifier: WeeksHabitTableViewCell.identifier)
     }
     
@@ -75,6 +78,15 @@ class HomeViewController: BaseViewController {
     
     @objc func didTapPlusButton() {
         let controller = NewGoalViewController()
+        
+        controller.onSuccessfulSaveHabit = { [weak self] habit in
+            let todaysHabit = TodaysHabitModel(title: habit.title, description: habit.description, image: habit.habitImage)
+            self?.viewmodel.setTodaysHabit(data: todaysHabit)
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -95,7 +107,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ProgressCardTableViewCell.identifier, for: indexPath)
             return cell
         case HomeSections.todaysHabit.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitTableViewCell.identifier, for: indexPath)
+            if viewmodel.todaysHabit.isEmpty {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitEmptyStateTableViewCell.identifier, for: indexPath) as? TodaysHabitEmptyStateTableViewCell else { return UITableViewCell() }
+                return cell
+            }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitTableViewCell.identifier, for: indexPath) as? TodaysHabitTableViewCell else { return UITableViewCell() }
+            
+            cell.configure(model: viewmodel.todaysHabit)
             return cell
         case HomeSections.weeksHabit.rawValue:
             let cell = tableView.dequeueReusableCell(withIdentifier: WeeksHabitTableViewCell.identifier, for: indexPath)
@@ -109,8 +127,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
+        case HomeSections.todaysHabit.rawValue:
+            if viewmodel.todaysHabit.isEmpty {
+                return 1
+            }
+            return viewmodel.todaysHabit.count
         case HomeSections.weeksHabit.rawValue:
-            return 6
+            return 4
         default:
             return 1
         }
@@ -120,12 +143,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return 60
     }
 
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case HomeSections.averageProgress.rawValue:
             return 150
         case HomeSections.todaysHabit.rawValue:
+            // empty state
+            if viewmodel.todaysHabit.isEmpty {
+                return 250
+            } else if viewmodel.todaysHabit.count <= 2 {
+                return 170
+            }
             return 300
         default:
             return 100

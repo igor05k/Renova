@@ -15,13 +15,14 @@ struct HabitData {
     var habitImage: String
     var daysSelected: [String: String]?
     var deadline: Date?
-    var time: String? = "No notifications"
+    var time: String?
     
     init() {
         self.title = ""
         self.description = ""
         self.habitImage = ""
         self.deadline = nil
+        self.time = nil
         /// dias selecionados precisa ser inicializado com valors pois o primeiro segmento é o de 'dias da semana'. se o valor inicial for nil, ele irá cair na mensagem
         /// de erro de 'pelo menos um campo de frequencia precisa ser selecionado'. sendo assim, por padrão, dias selecionados precisa ser inicializado com valores
         /// o que não exclui essa propriedade de ser nil

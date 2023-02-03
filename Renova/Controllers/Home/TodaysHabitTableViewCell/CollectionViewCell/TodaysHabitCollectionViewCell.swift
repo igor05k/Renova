@@ -24,25 +24,24 @@ class TodaysHabitCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupCell()
         
         layer.cornerRadius = 10
     }
     
-    func setupCell() {
-        habitTitle.text = "Correr 5km"
+    func setupCell(model: TodaysHabitModel) {
+        habitTitle.text = model.title
         
         habitDescription.numberOfLines = 2
-        habitDescription.text = "Correr e treinar todos os dias 5km"
+        habitDescription.text = model.description
         
-        habitImageView.image = UIImage(named: "running")
+        habitImageView.image = UIImage(named: model.image)
+        
+        checkmarkImageView.image = UIImage(systemName: "checkmark")
         
         habitCheckmarkContainer.layer.cornerRadius = 15
         habitCheckmarkContainer.clipsToBounds = true
         habitCheckmarkContainer.layer.borderWidth = 1
         habitCheckmarkContainer.layer.borderColor = UIColor.systemBlue.cgColor
-        
-        checkmarkImageView.image = UIImage(systemName: "checkmark")
     }
 
 }
