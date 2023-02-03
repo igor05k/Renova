@@ -9,7 +9,7 @@ import Foundation
 
 struct HomeViewModel {
     private(set) var todaysHabit: [TodaysHabitModel] = []
-    private(set) var weeklyHabits: [DuringWeekHabitsModel] = []
+    private(set) var weeklyHabits: [DuringWeekHabitsModel] = [.init(title: "Finalizar meu projeto", daysOfTheWeek: ["T", "D"])]
     
     mutating public func setTodaysHabit(data: TodaysHabitModel) {
         todaysHabit.append(data)

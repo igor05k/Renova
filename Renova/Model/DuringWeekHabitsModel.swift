@@ -8,6 +8,6 @@
 import Foundation
 
 struct DuringWeekHabitsModel {
-    let name: String
+    let title: String
     let daysOfTheWeek: [String]
 }

@@ -35,7 +35,12 @@ class WeekDaysCollectionViewCell: UICollectionViewCell {
         stackView.layer.borderColor = UIColor.black.cgColor
     }
     
-    func setupCell(day: String) {
+    func setupCell(day: String, isActive: Int) {
         weekDayLabel.text = day
+        if isActive == 0 {
+            stackView.layer.borderColor = CGColor(red: 20 / 255, green: 255 / 255, blue: 20 / 255, alpha: 1)
+        } else {
+            stackView.layer.borderColor = CGColor(red: 20 / 255, green: 20 / 255, blue: 255 / 255, alpha: 1)
+        }
     }
 }

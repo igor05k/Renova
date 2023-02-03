@@ -107,6 +107,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ProgressCardTableViewCell.identifier, for: indexPath)
             return cell
         case HomeSections.todaysHabit.rawValue:
+            // empty state
             if viewmodel.todaysHabit.isEmpty {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitEmptyStateTableViewCell.identifier, for: indexPath) as? TodaysHabitEmptyStateTableViewCell else { return UITableViewCell() }
                 return cell
@@ -116,7 +117,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configure(model: viewmodel.todaysHabit)
             return cell
         case HomeSections.weeksHabit.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: WeeksHabitTableViewCell.identifier, for: indexPath)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: WeeksHabitTableViewCell.identifier, for: indexPath) as? WeeksHabitTableViewCell else { return UITableViewCell() }
+            cell.setupCell(model: viewmodel.weeklyHabits[indexPath.row])
             return cell
         default:
             return UITableViewCell()
@@ -133,7 +135,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return viewmodel.todaysHabit.count
         case HomeSections.weeksHabit.rawValue:
-            return 4
+            return 1
         default:
             return 1
         }
