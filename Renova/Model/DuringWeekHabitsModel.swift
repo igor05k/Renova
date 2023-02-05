@@ -10,4 +10,5 @@ import Foundation
 struct DuringWeekHabitsModel {
     let title: String
     let daysOfTheWeek: [String]
+    let markAsCompleted: [String]
 }

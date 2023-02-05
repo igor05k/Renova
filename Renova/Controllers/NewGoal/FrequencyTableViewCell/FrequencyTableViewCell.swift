@@ -33,6 +33,19 @@ enum DaysOfTheWeek: String, CaseIterable {
         default: return nil
         }
     }
+    
+    static func convertDayToInt(rawValue: String) -> Int? {
+        switch rawValue {
+        case "SEG": return 2
+        case "TER": return 3
+        case "QUA": return 4
+        case "QUI": return 5
+        case "SEX": return 6
+        case "SÁB": return 7
+        case "DOM": return 1
+        default: return nil
+        }
+    }
 }
 
 enum SegmentSelected: Int {

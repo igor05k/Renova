@@ -135,7 +135,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return viewmodel.todaysHabit.count
         case HomeSections.weeksHabit.rawValue:
-            return 1
+            return viewmodel.weeklyHabits.count
         default:
             return 1
         }
