@@ -77,16 +77,16 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func didTapPlusButton() {
-        let controller = NewGoalViewController()
-        
+        goToCreateNewHabit()
+    }
+    
+    private func goToCreateNewHabit() {
+        let controller = NewHabitViewController()
         controller.onSuccessfulSaveHabit = { [weak self] habit in
             let todaysHabit = TodaysHabitModel(title: habit.title, description: habit.description, image: habit.habitImage)
             self?.viewmodel.setTodaysHabit(data: todaysHabit)
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
+            self?.tableView.reloadData()
         }
-        
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -98,6 +98,8 @@ class HomeViewController: BaseViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
         ])
     }
+    
+    let semaphore = DispatchSemaphore(value: 1)
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -110,6 +112,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             // empty state
             if viewmodel.todaysHabit.isEmpty {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitEmptyStateTableViewCell.identifier, for: indexPath) as? TodaysHabitEmptyStateTableViewCell else { return UITableViewCell() }
+                cell.didTapGoToCreateNewHabit = { [weak self] in
+                    self?.goToCreateNewHabit()
+                }
                 return cell
             }
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitTableViewCell.identifier, for: indexPath) as? TodaysHabitTableViewCell else { return UITableViewCell() }
@@ -133,7 +138,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             if viewmodel.todaysHabit.isEmpty {
                 return 1
             }
-            return viewmodel.todaysHabit.count
+            return 1
         case HomeSections.weeksHabit.rawValue:
             return viewmodel.weeklyHabits.count
         default:
@@ -144,7 +149,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case HomeSections.averageProgress.rawValue:

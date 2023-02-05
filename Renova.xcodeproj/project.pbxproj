@@ -43,8 +43,8 @@
 		8282C44F297EFD0A00E0B4EF /* AuthenticationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282C44E297EFD0A00E0B4EF /* AuthenticationErrors.swift */; };
 		828A681129816C8D0013A4AF /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 828A681029816C8D0013A4AF /* GoogleSignIn */; };
 		828A681329816C8D0013A4AF /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 828A681229816C8D0013A4AF /* GoogleSignInSwift */; };
-		828A68182981A8250013A4AF /* NewGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A68172981A8250013A4AF /* NewGoalView.swift */; };
-		828A681D2981A8650013A4AF /* NewGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A681C2981A8650013A4AF /* NewGoalViewController.swift */; };
+		828A68182981A8250013A4AF /* NewHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A68172981A8250013A4AF /* NewHabitView.swift */; };
+		828A681D2981A8650013A4AF /* NewHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A681C2981A8650013A4AF /* NewHabitViewController.swift */; };
 		828A68252981B4720013A4AF /* NewGoalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A68232981B4720013A4AF /* NewGoalDetailsTableViewCell.swift */; };
 		828A68262981B4720013A4AF /* NewGoalDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828A68242981B4720013A4AF /* NewGoalDetailsTableViewCell.xib */; };
 		82B020112986B07700FEAF67 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B020102986B07700FEAF67 /* BaseViewController.swift */; };
@@ -66,7 +66,7 @@
 		82F8F20F2982CDF5001E911E /* ReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */; };
 		82F8F2132983065A001E911E /* SaveGoalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F2112983065A001E911E /* SaveGoalTableViewCell.swift */; };
 		82F8F2142983065A001E911E /* SaveGoalTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82F8F2122983065A001E911E /* SaveGoalTableViewCell.xib */; };
-		82F8F216298312A2001E911E /* NewGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F215298312A2001E911E /* NewGoalViewModel.swift */; };
+		82F8F216298312A2001E911E /* NewHabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F215298312A2001E911E /* NewHabitViewModel.swift */; };
 		82F8F21829831323001E911E /* HabitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F21729831323001E911E /* HabitData.swift */; };
 		82F8F22F298459C0001E911E /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F22E298459C0001E911E /* ProgressView.swift */; };
 		82F8F231298459DE001E911E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F230298459DE001E911E /* ProgressViewController.swift */; };
@@ -109,8 +109,8 @@
 		8282C449297EFA8900E0B4EF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8282C44B297EFB9400E0B4EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		8282C44E297EFD0A00E0B4EF /* AuthenticationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrors.swift; sourceTree = "<group>"; };
-		828A68172981A8250013A4AF /* NewGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalView.swift; sourceTree = "<group>"; };
-		828A681C2981A8650013A4AF /* NewGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewController.swift; sourceTree = "<group>"; };
+		828A68172981A8250013A4AF /* NewHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitView.swift; sourceTree = "<group>"; };
+		828A681C2981A8650013A4AF /* NewHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitViewController.swift; sourceTree = "<group>"; };
 		828A68232981B4720013A4AF /* NewGoalDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		828A68242981B4720013A4AF /* NewGoalDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewGoalDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		82B020102986B07700FEAF67 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		82F8F20D2982CDF5001E911E /* ReminderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReminderTableViewCell.xib; sourceTree = "<group>"; };
 		82F8F2112983065A001E911E /* SaveGoalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveGoalTableViewCell.swift; sourceTree = "<group>"; };
 		82F8F2122983065A001E911E /* SaveGoalTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveGoalTableViewCell.xib; sourceTree = "<group>"; };
-		82F8F215298312A2001E911E /* NewGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGoalViewModel.swift; sourceTree = "<group>"; };
+		82F8F215298312A2001E911E /* NewHabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitViewModel.swift; sourceTree = "<group>"; };
 		82F8F21729831323001E911E /* HabitData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitData.swift; sourceTree = "<group>"; };
 		82F8F22E298459C0001E911E /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		82F8F230298459DE001E911E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -396,7 +396,7 @@
 		828A68192981A8450013A4AF /* NewGoalView */ = {
 			isa = PBXGroup;
 			children = (
-				828A68172981A8250013A4AF /* NewGoalView.swift */,
+				828A68172981A8250013A4AF /* NewHabitView.swift */,
 			);
 			path = NewGoalView;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 		828A681A2981A84E0013A4AF /* NewGoalController */ = {
 			isa = PBXGroup;
 			children = (
-				828A681C2981A8650013A4AF /* NewGoalViewController.swift */,
+				828A681C2981A8650013A4AF /* NewHabitViewController.swift */,
 			);
 			path = NewGoalController;
 			sourceTree = "<group>";
@@ -412,7 +412,7 @@
 		828A681B2981A8530013A4AF /* NewGoalViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				82F8F215298312A2001E911E /* NewGoalViewModel.swift */,
+				82F8F215298312A2001E911E /* NewHabitViewModel.swift */,
 			);
 			path = NewGoalViewModel;
 			sourceTree = "<group>";
@@ -751,7 +751,7 @@
 				827707102980256A00B53595 /* MainTabBarController.swift in Sources */,
 				82E5A9F9297DC44500F249A9 /* AppDelegate.swift in Sources */,
 				82E0BF5D298805EE0077FC10 /* TodaysHabitCollectionViewCell.swift in Sources */,
-				82F8F216298312A2001E911E /* NewGoalViewModel.swift in Sources */,
+				82F8F216298312A2001E911E /* NewHabitViewModel.swift in Sources */,
 				8282C44A297EFA8900E0B4EF /* HomeView.swift in Sources */,
 				8250673D298D690E00850231 /* DuringWeekHabitsModel.swift in Sources */,
 				82F8F22F298459C0001E911E /* ProgressView.swift in Sources */,
@@ -763,7 +763,7 @@
 				82136B5A297DDC2C00EAF1E0 /* RegisterView.swift in Sources */,
 				8282C446297EFA4D00E0B4EF /* HomeViewController.swift in Sources */,
 				82F8F20E2982CDF5001E911E /* ReminderTableViewCell.swift in Sources */,
-				828A681D2981A8650013A4AF /* NewGoalViewController.swift in Sources */,
+				828A681D2981A8650013A4AF /* NewHabitViewController.swift in Sources */,
 				82F8F21829831323001E911E /* HabitData.swift in Sources */,
 				824372E22981B889007EA51B /* FrequencyTableViewCell.swift in Sources */,
 				82F8F231298459DE001E911E /* ProgressViewController.swift in Sources */,
@@ -773,7 +773,7 @@
 				8282C443297EDDD900E0B4EF /* Alert.swift in Sources */,
 				82506739298D5A3E00850231 /* TodaysHabitEmptyStateTableViewCell.swift in Sources */,
 				82136B58297DDC1800EAF1E0 /* RegisterViewController.swift in Sources */,
-				828A68182981A8250013A4AF /* NewGoalView.swift in Sources */,
+				828A68182981A8250013A4AF /* NewHabitView.swift in Sources */,
 				828A68252981B4720013A4AF /* NewGoalDetailsTableViewCell.swift in Sources */,
 				82F8F2132983065A001E911E /* SaveGoalTableViewCell.swift in Sources */,
 				8282C44F297EFD0A00E0B4EF /* AuthenticationErrors.swift in Sources */,

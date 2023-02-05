@@ -12,7 +12,7 @@ class TodaysHabitTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let colors: [UIColor] = [.cellbg1, .cellbg2, .cellbg3, .cellbg4, .cellbg5, .cellbg6, .cellbg7]
-    private var todaysHabit: [TodaysHabitModel] = [.init(title: "Meu titulo", description: "Minha descrição", image: "bike")]
+    private var todaysHabit: [TodaysHabitModel] = []
     
     static let identifier: String = String(describing: TodaysHabitTableViewCell.self)
     

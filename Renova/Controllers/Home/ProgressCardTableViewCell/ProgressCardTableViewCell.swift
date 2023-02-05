@@ -71,7 +71,7 @@ class ProgressCardTableViewCell: UITableViewCell {
         // Update the progress of the progress layer
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.toValue = 0.8
-        animation.duration = 2
+        animation.duration = 1
         animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
         progressLayer.add(animation, forKey: "animation")

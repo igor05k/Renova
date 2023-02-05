@@ -15,10 +15,10 @@ enum NewGoalSections: Int {
     case saveButton = 4
 }
 
-class NewGoalViewController: BaseViewController {
+class NewHabitViewController: BaseViewController {
     
     private var habit: HabitData
-    private var viewmodel: NewGoalViewModel = NewGoalViewModel()
+    private var viewmodel: NewHabitViewModel = NewHabitViewModel()
     
     var onSuccessfulSaveHabit: ((_ data: HabitData) -> Void)?
     
@@ -28,10 +28,10 @@ class NewGoalViewController: BaseViewController {
         return table
     }()
     
-    private var screen: NewGoalView?
+    private var screen: NewHabitView?
     
     override func loadView() {
-        screen = NewGoalView()
+        screen = NewHabitView()
         view = screen
     }
     
@@ -125,7 +125,7 @@ class NewGoalViewController: BaseViewController {
     }
 }
 
-extension NewGoalViewController: UITableViewDataSource, UITableViewDelegate {
+extension NewHabitViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case NewGoalSections.details.rawValue:

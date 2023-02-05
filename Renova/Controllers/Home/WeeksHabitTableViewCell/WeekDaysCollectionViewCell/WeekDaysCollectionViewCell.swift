@@ -38,11 +38,17 @@ class WeekDaysCollectionViewCell: UICollectionViewCell {
     func setupCell(day: String, isActive: Int) {
         weekDayLabel.text = day
         if isActive == 0 {
-            stackView.layer.borderColor = CGColor(red: 20 / 255, green: 255 / 255, blue: 20 / 255, alpha: 1)
+            stackView.layer.borderColor = CGColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 0.3)
+            stackView.backgroundColor = .black.withAlphaComponent(0.3)
+        } else if isActive == 1 {
+            stackView.layer.borderColor = CGColor(red: 255 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1)
+            stackView.backgroundColor = .systemRed.withAlphaComponent(0.3)
         } else if isActive == 2 {
-            stackView.layer.borderColor = CGColor(red: 255 / 255, green: 20 / 255, blue: 20 / 255, alpha: 1)
+            stackView.layer.borderColor = CGColor(red: 0 / 255, green: 0 / 255, blue: 255 / 255, alpha: 1)
+            stackView.backgroundColor = .systemBlue.withAlphaComponent(0.3)
         } else {
-            stackView.layer.borderColor = CGColor(red: 20 / 255, green: 20 / 255, blue: 255 / 255, alpha: 1)
+            stackView.layer.borderColor = CGColor(red: 0 / 255, green: 255 / 255, blue: 0 / 255, alpha: 1)
+            stackView.backgroundColor = .systemGreen.withAlphaComponent(0.3)
         }
     }
 }

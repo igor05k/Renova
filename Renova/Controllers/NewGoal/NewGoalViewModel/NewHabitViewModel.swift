@@ -28,7 +28,7 @@ enum CreateAGoalErrors: LocalizedError {
     }
 }
 
-struct NewGoalViewModel {
+struct NewHabitViewModel {
     
     var onEmptyFrequency: (() -> Void)?
     var onEmptyTitle: (() -> Void)?

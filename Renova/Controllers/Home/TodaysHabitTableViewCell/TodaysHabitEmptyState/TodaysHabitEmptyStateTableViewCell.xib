@@ -32,6 +32,9 @@
                         <rect key="frame" x="21" y="190.33333333333334" width="278" height="35"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                        <connections>
+                            <action selector="goToCreateNewHabit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UeW-h2-IeZ"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

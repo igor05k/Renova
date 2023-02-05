@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewGoalView: UIView {
+class NewHabitView: UIView {
     
    override init(frame: CGRect) {
         super.init(frame: frame)

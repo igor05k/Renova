@@ -10,6 +10,8 @@ import UIKit
 class TodaysHabitEmptyStateTableViewCell: UITableViewCell {
     static let identifier: String = String(describing: TodaysHabitEmptyStateTableViewCell.self)
     
+    var didTapGoToCreateNewHabit: (() -> Void)?
+    
     static func nib() -> UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
@@ -36,5 +38,9 @@ class TodaysHabitEmptyStateTableViewCell: UITableViewCell {
         addNewHabitButton.clipsToBounds = true
         addNewHabitButton.setTitleColor(.white, for: .normal)
         addNewHabitButton.backgroundColor = .backgroundPrimary
+    }
+    
+    @IBAction func goToCreateNewHabit(_ sender: UIButton) {
+        didTapGoToCreateNewHabit?()
     }
 }
