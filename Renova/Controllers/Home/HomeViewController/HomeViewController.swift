@@ -40,6 +40,9 @@ class HomeViewController: BaseViewController {
         navigationItem.rightBarButtonItem = addButton
         configTableView()
         setTableView()
+        setupBindings()
+        
+        viewmodel.fetchTodaysHabit()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +54,12 @@ class HomeViewController: BaseViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.tintColor = .backgroundPrimary
         navigationItem.backButtonDisplayMode = .minimal
+    }
+    
+    func setupBindings() {
+        viewmodel.onSuccessfulFetch = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     // MARK: Config tableview
@@ -98,8 +107,6 @@ class HomeViewController: BaseViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
         ])
     }
-    
-    let semaphore = DispatchSemaphore(value: 1)
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -110,13 +117,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case HomeSections.todaysHabit.rawValue:
             // empty state
-            if viewmodel.todaysHabit.isEmpty {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitEmptyStateTableViewCell.identifier, for: indexPath) as? TodaysHabitEmptyStateTableViewCell else { return UITableViewCell() }
-                cell.didTapGoToCreateNewHabit = { [weak self] in
-                    self?.goToCreateNewHabit()
-                }
-                return cell
-            }
+//            if viewmodel.isTodaysHabitEmtpy {
+//                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitEmptyStateTableViewCell.identifier, for: indexPath) as? TodaysHabitEmptyStateTableViewCell else { return UITableViewCell() }
+//                cell.didTapGoToCreateNewHabit = { [weak self] in
+//                    self?.goToCreateNewHabit()
+//                }
+//                return cell
+//            }
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitTableViewCell.identifier, for: indexPath) as? TodaysHabitTableViewCell else { return UITableViewCell() }
             
             cell.configure(model: viewmodel.todaysHabit)
