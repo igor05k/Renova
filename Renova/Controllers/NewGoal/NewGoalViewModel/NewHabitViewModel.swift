@@ -78,7 +78,7 @@ struct NewHabitViewModel {
             endDate = nil
         }
         
-        let newHabit: [String : Any?] = ["name": name, "description": description, "startDate": currentDateString, "endDate": endDate ?? nil, "daysOfTheWeek": daysOfTheWeek, "alert": time ?? nil, "habitImage": habitImage]
+        let newHabit: [String : Any?] = ["name": name, "description": description, "startDate": currentDateString, "endDate": endDate ?? nil, "daysOfTheWeek": daysOfTheWeek, "alert": time ?? nil, "habitImage": habitImage, "markAsCompleted": [String]()]
         
         // create a new collection of habits/add a new habit into the collection
         db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").addDocument(data: newHabit as [String : Any])

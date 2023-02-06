@@ -20,8 +20,12 @@ final class HomeViewModel {
         }
     }
     
-    private(set) var weeklyHabits: [DuringWeekHabitsModel] = [.init(title: "Finalizar meu projeto", daysOfTheWeek: ["SEG", "TER", "SÁB", "DOM"], markAsCompleted: ["SEG"]),
-                                                              .init(title: "Academia", daysOfTheWeek: ["SEG", "TER", "QUA", "QUI", "SEX"], markAsCompleted: ["SEG", "TER", "QUA"])]
+    private(set) var weeklyHabits: [DuringWeekHabitsModel] = [.init(title: "Finalizar meu projeto",
+                                                                    daysOfTheWeek: ["SEG": "Segunda", "TER": "Terça", "SÁB": "Sábado", "DOM": "Domingo"],
+                                                                    markAsCompleted: ["SEG"]),
+                                                              .init(title: "Academia",
+                                                                    daysOfTheWeek: ["SEG": "Segunda", "TER": "Terça", "QUA": "Quarta", "QUI": "Quinta", "SEX": "Sexta"],
+                                                                    markAsCompleted: ["SEG", "TER", "QUA"])]
     
     private(set) var isTodaysHabitEmtpy: Bool = false
     
@@ -47,6 +51,28 @@ final class HomeViewModel {
                            let habitImage = data["habitImage"] as? String {
                             let todayHabit = TodaysHabitModel(title: exerciseName, description: desc, image: habitImage)
                             self?.todaysHabit.append(todayHabit)
+                            self?.onSuccessfulFetch?()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func fetchWeeklyHabits() {
+        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").getDocuments { [weak self] snapshot, error in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                if let snapshot {
+                    for document in snapshot.documents {
+                        let data = document.data()
+                        
+                        if let habitName = data["name"] as? String,
+                           let daysOfTheWeek = data["daysOfTheWeek"] as? [String : String],
+                           let markAsCompleted = data["markAsCompleted"] as? [String] {
+                            let weeklyHabits = DuringWeekHabitsModel(title: habitName, daysOfTheWeek: daysOfTheWeek, markAsCompleted: markAsCompleted)
+                            self?.weeklyHabits.append(weeklyHabits)
                             self?.onSuccessfulFetch?()
                         }
                     }

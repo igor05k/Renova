@@ -316,8 +316,8 @@
             filePath = "Renova/Controllers/Home/HomeViewModel/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "checkIfTodaysHabitIsEmpty()"
             landmarkType = "7">
          </BreakpointContent>

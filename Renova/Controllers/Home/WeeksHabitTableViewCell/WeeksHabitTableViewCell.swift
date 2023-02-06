@@ -51,7 +51,7 @@ class WeeksHabitTableViewCell: UITableViewCell {
     // deadline = dias escolhidos pelo usuario = model.daysOfTheWeek
     func setupCell(model: DuringWeekHabitsModel) {
         weeksHabitTitleLabel.text = model.title
-        let notChosenDaysByUser = weekDays.filter({ !model.daysOfTheWeek.contains($0) })
+        let notChosenDaysByUser = weekDays.filter({ !model.daysOfTheWeek.keys.contains($0) })
         self.unchosenDays = notChosenDaysByUser
         
         // semana atual em int (mais especificamente o dia atual)
@@ -62,7 +62,7 @@ class WeeksHabitTableViewCell: UITableViewCell {
         // weekDays = base pra ser comparada
         for day in weekDays {
             // dias escolhidos
-            if model.daysOfTheWeek.contains(day) {
+            if model.daysOfTheWeek.keys.contains(day) {
                 if let dayChosenByUserToInt = DaysOfTheWeek.convertDayToInt(rawValue: day) {
                     // failed: diferente de hoje e não foi concluído
                     if dayChosenByUserToInt != currentWeekdayInt && !model.markAsCompleted.contains(day) {
