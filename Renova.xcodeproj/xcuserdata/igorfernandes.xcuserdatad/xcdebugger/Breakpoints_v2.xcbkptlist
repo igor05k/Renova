@@ -309,16 +309,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "79C48A7D-D58E-4E49-986E-616FA8DB1196"
+            uuid = "D410BD90-4F9C-477E-B768-AEE50CF1DC16"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Renova/Controllers/Home/HomeViewModel/HomeViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "fetchTodaysHabit()"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "checkIfTodaysHabitIsEmpty()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

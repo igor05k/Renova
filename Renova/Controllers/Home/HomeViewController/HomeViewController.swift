@@ -43,6 +43,7 @@ class HomeViewController: BaseViewController {
         setupBindings()
         
         viewmodel.fetchTodaysHabit()
+        viewmodel.checkIfTodaysHabitIsEmpty()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,14 +117,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: ProgressCardTableViewCell.identifier, for: indexPath)
             return cell
         case HomeSections.todaysHabit.rawValue:
+            print("CELL FOR ROW AT", viewmodel.isTodaysHabitEmtpy)
             // empty state
-//            if viewmodel.isTodaysHabitEmtpy {
-//                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitEmptyStateTableViewCell.identifier, for: indexPath) as? TodaysHabitEmptyStateTableViewCell else { return UITableViewCell() }
-//                cell.didTapGoToCreateNewHabit = { [weak self] in
-//                    self?.goToCreateNewHabit()
-//                }
-//                return cell
-//            }
+            if viewmodel.isTodaysHabitEmtpy {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitEmptyStateTableViewCell.identifier, for: indexPath) as? TodaysHabitEmptyStateTableViewCell else { return UITableViewCell() }
+                cell.didTapGoToCreateNewHabit = { [weak self] in
+                    self?.goToCreateNewHabit()
+                }
+                return cell
+            }
             guard let cell = tableView.dequeueReusableCell(withIdentifier: TodaysHabitTableViewCell.identifier, for: indexPath) as? TodaysHabitTableViewCell else { return UITableViewCell() }
             
             cell.configure(model: viewmodel.todaysHabit)

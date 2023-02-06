@@ -14,12 +14,16 @@ final class HomeViewModel {
     var didTodaysHabitReceiveValue: (() -> Void)?
     var onSuccessfulFetch: (() -> Void)?
     
-    private(set) var todaysHabit: [TodaysHabitModel] = []
+    private(set) var todaysHabit: [TodaysHabitModel] = [] {
+        didSet {
+            isTodaysHabitEmtpy = false
+        }
+    }
     
     private(set) var weeklyHabits: [DuringWeekHabitsModel] = [.init(title: "Finalizar meu projeto", daysOfTheWeek: ["SEG", "TER", "SÁB", "DOM"], markAsCompleted: ["SEG"]),
                                                               .init(title: "Academia", daysOfTheWeek: ["SEG", "TER", "QUA", "QUI", "SEX"], markAsCompleted: ["SEG", "TER", "QUA"])]
     
-    public var isTodaysHabitEmtpy: Bool = false
+    private(set) var isTodaysHabitEmtpy: Bool = false
     
     func setTodaysHabit(data: TodaysHabitModel) {
         todaysHabit.append(data)
@@ -30,7 +34,6 @@ final class HomeViewModel {
     }
     
     func fetchTodaysHabit() {
-        checkIfTodaysHabitIsEmpty()
         db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").getDocuments { [weak self] snapshot, error in
             if let error = error {
                 print("Error getting documents: \(error)")
@@ -52,16 +55,19 @@ final class HomeViewModel {
         }
     }
     
-    private func checkIfTodaysHabitIsEmpty() {
-        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").getDocuments { [weak self] (querySnapshot, error) in
-            if let error = error {
+    func checkIfTodaysHabitIsEmpty() {
+        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").getDocuments { [weak self] snapshot, error in
+            if let error {
                 print("Error getting documents: \(error)")
             } else {
-                let count = querySnapshot?.documents.count ?? 0
+                let count = snapshot?.documents.count ?? 0
+                print(count)
                 if count == 0 {
                     self?.isTodaysHabitEmtpy = true
+                    self?.onSuccessfulFetch?()
                 } else {
                     self?.isTodaysHabitEmtpy = false
+                    self?.onSuccessfulFetch?()
                 }
             }
         }
