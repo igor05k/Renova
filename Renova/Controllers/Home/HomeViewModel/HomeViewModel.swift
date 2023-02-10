@@ -21,11 +21,14 @@ final class HomeViewModel {
     }
     
     private(set) var weeklyHabits: [DuringWeekHabitsModel] = [.init(title: "Finalizar meu projeto",
-                                                                    daysOfTheWeek: ["SEG": "Segunda", "TER": "Terça", "SÁB": "Sábado", "DOM": "Domingo"],
-                                                                    markAsCompleted: ["SEG"]),
-                                                              .init(title: "Academia",
-                                                                    daysOfTheWeek: ["SEG": "Segunda", "TER": "Terça", "QUA": "Quarta", "QUI": "Quinta", "SEX": "Sexta"],
-                                                                    markAsCompleted: ["SEG", "TER", "QUA"])]
+                                                                    daysOfTheWeek: ["SEG": "Segunda",
+                                                                                    "TER": "Terça",
+                                                                                    "QUA": "Quarta",
+                                                                                    "QUI": "Quinta",
+                                                                                    "SEX": "Sexta",
+                                                                                    "SÁB": "Sábado",
+                                                                                    "DOM": "Domingo"],
+                                                                    markAsCompleted: ["QUA"])]
     
     private(set) var isTodaysHabitEmtpy: Bool = false
     
