@@ -87,7 +87,6 @@ final class HomeViewModel {
                 print("Error getting documents: \(error)")
             } else {
                 let count = snapshot?.documents.count ?? 0
-                print(count)
                 if count == 0 {
                     self?.isTodaysHabitEmtpy = true
                     self?.onSuccessfulFetch?()

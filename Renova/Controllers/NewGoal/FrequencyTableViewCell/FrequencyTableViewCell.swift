@@ -36,13 +36,13 @@ enum DaysOfTheWeek: String, CaseIterable {
     
     static func convertDayToInt(rawValue: String) -> Int? {
         switch rawValue {
-        case "SEG": return 2
-        case "TER": return 3
-        case "QUA": return 4
-        case "QUI": return 5
-        case "SEX": return 6
-        case "SÁB": return 7
-        case "DOM": return 1
+        case "SEG": return 1
+        case "TER": return 2
+        case "QUA": return 3
+        case "QUI": return 4
+        case "SEX": return 5
+        case "SÁB": return 6
+        case "DOM": return 7
         default: return nil
         }
     }

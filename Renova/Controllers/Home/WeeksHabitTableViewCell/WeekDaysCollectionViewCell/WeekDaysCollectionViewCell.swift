@@ -46,9 +46,11 @@ class WeekDaysCollectionViewCell: UICollectionViewCell {
         } else if isActive == 2 {
             stackView.layer.borderColor = CGColor(red: 0 / 255, green: 0 / 255, blue: 255 / 255, alpha: 1)
             stackView.backgroundColor = .systemBlue.withAlphaComponent(0.3)
-        } else {
+        } else if isActive == 3 {
             stackView.layer.borderColor = CGColor(red: 0 / 255, green: 255 / 255, blue: 0 / 255, alpha: 1)
             stackView.backgroundColor = .systemGreen.withAlphaComponent(0.3)
+        } else {
+            stackView.backgroundColor = .viewBackgroundColor
         }
     }
 }

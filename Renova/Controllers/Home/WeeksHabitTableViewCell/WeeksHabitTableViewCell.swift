@@ -14,7 +14,7 @@ enum HabitProgressState: Int {
     case failed = 1
     case inProgress = 2
     case completed = 3
-    
+    case toBeCompleted = 4
 }
 
 class WeeksHabitTableViewCell: UITableViewCell {
@@ -48,7 +48,16 @@ class WeeksHabitTableViewCell: UITableViewCell {
         collectionView.register(WeekDaysCollectionViewCell.nib(), forCellWithReuseIdentifier: WeekDaysCollectionViewCell.identifier)
     }
     
-    // deadline = dias escolhidos pelo usuario = model.daysOfTheWeek
+    /// isso faz com que segunda seja o primeiro dia da semana (1) e não domingo
+    private func setFirstDayOfTheWeek(_ calendar: Calendar, _ currentWeekdayInt: inout Int) {
+        if calendar.firstWeekday == 2 {
+            currentWeekdayInt -= 1
+            if currentWeekdayInt == 0 {
+                currentWeekdayInt = 7
+            }
+        }
+    }
+    
     func setupCell(model: DuringWeekHabitsModel) {
         weeksHabitTitleLabel.text = model.title
         let notChosenDaysByUser = weekDays.filter({ !model.daysOfTheWeek.keys.contains($0) })
@@ -56,23 +65,28 @@ class WeeksHabitTableViewCell: UITableViewCell {
         
         // semana atual em int (mais especificamente o dia atual)
         let today = Date()
-        let calendar = Calendar.current
-        let currentWeekdayInt = calendar.component(.weekday, from: today)
+        var calendar = Calendar.current
+        var currentWeekdayInt = calendar.component(.weekday, from: today)
+        
+        setFirstDayOfTheWeek(calendar, &currentWeekdayInt)
         
         // weekDays = base pra ser comparada
         for day in weekDays {
             // dias escolhidos
             if model.daysOfTheWeek.keys.contains(day) {
                 if let dayChosenByUserToInt = DaysOfTheWeek.convertDayToInt(rawValue: day) {
+                    print("currentWeekdayInt=========", currentWeekdayInt)
                     // failed: diferente de hoje e não foi concluído
-                    if dayChosenByUserToInt != currentWeekdayInt && !model.markAsCompleted.contains(day) {
+                    if dayChosenByUserToInt < currentWeekdayInt && !model.markAsCompleted.contains(day) {
                         chosenDays.append(HabitProgressState.failed.rawValue)
                         // in progress: está no prazo e ainda não foi concluido
-                    } else if dayChosenByUserToInt >= currentWeekdayInt && !model.markAsCompleted.contains(day) {
+                    } else if dayChosenByUserToInt == currentWeekdayInt && !model.markAsCompleted.contains(day) {
                         chosenDays.append(HabitProgressState.inProgress.rawValue)
-                        // completed: está no prazo e foi concluido (if dayChosenByUserToInt >= currentWeekdayInt && model.markAsCompleted.contains(day))
-                    } else {
+                        // completed: está no prazo e foi concluido
+                    } else if dayChosenByUserToInt <= currentWeekdayInt && model.markAsCompleted.contains(day) {
                         chosenDays.append(HabitProgressState.completed.rawValue)
+                    } else {
+                        chosenDays.append(HabitProgressState.toBeCompleted.rawValue)
                     }
                 }
             } else {
