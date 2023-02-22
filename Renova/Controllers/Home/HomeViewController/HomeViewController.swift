@@ -42,9 +42,31 @@ class HomeViewController: BaseViewController {
         setTableView()
         setupBindings()
         
-        viewmodel.fetchTodaysHabit()
+//        viewmodel.fetchTodaysHabit()
         viewmodel.fetchWeeklyHabits()
         viewmodel.checkIfTodaysHabitIsEmpty()
+        
+//        let calendar = Calendar.current
+//        let today = Date()
+//        let weekday = calendar.component(.weekday, from: today)
+//        let daysToAdd = (Calendar.current.firstWeekday - weekday) % 7
+//        guard let startDate = calendar.date(byAdding: DateComponents(weekday: Calendar.current.firstWeekday + daysToAdd), to: today),
+//              let endDate = calendar.date(byAdding: .day, value: 6, to: startDate) else {
+//            print("Não foi possível criar as datas")
+//            return
+//        }
+//
+//        var currentDate = startDate
+//        while currentDate <= endDate {
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "dd/MM/yyyy"
+//            print(dateFormatter.string(from: currentDate))
+//            guard let nextDate = calendar.date(byAdding: .day, value: 1, to: currentDate) else {
+//                fatalError("Não foi possível calcular a próxima data")
+//            }
+//            currentDate = nextDate
+//        }
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -19,7 +19,19 @@ enum HabitProgressState: Int {
 
 class WeeksHabitTableViewCell: UITableViewCell {
     
+    // para fazer o dequeue das células corretamente e apresentar os dias de acordo
     private let weekDays: [String] = ["SEG", "TER", "QUA", "QUI", "SEX", "SÁB", "DOM"]
+    
+    // para poder usar como base e fazer a iteração com os dias escolhidos pelo usuário
+    private let weekDaysDateComponents: [DateComponents] = [DateComponents(weekday: 1),
+                                               DateComponents(weekday: 2),
+                                               DateComponents(weekday: 3),
+                                               DateComponents(weekday: 4),
+                                               DateComponents(weekday: 5),
+                                               DateComponents(weekday: 6),
+                                               DateComponents(weekday: 7)]
+    
+    // para mostrar os backgrounds de acordo com o status do hábito
     private var chosenDays: [Int] = []
     
     @IBOutlet weak var weeksHabitTitleLabel: UILabel!
@@ -46,75 +58,51 @@ class WeeksHabitTableViewCell: UITableViewCell {
         collectionView.register(WeekDaysCollectionViewCell.nib(), forCellWithReuseIdentifier: WeekDaysCollectionViewCell.identifier)
     }
     
-    /// isso faz com que segunda seja o primeiro dia da semana (1) e não domingo
-    private func setFirstDayOfTheWeek(_ calendar: Calendar, _ currentWeekdayInt: inout Int) -> Int {
-        if calendar.firstWeekday == 2 {
-            currentWeekdayInt -= 1
-            if currentWeekdayInt == 0 {
-                currentWeekdayInt = 7
-            }
-        }
-        return currentWeekdayInt
-    }
-    
     func setupCell(model: DuringWeekHabitsModel) {
-        weeksHabitTitleLabel.text = model.title
-        
-        // semana atual em int (mais especificamente o dia atual)
+        // data atual do usuário
         let today = Date()
-        let calendar = Calendar.current
         
-        var weekdayInt = calendar.component(.weekday, from: today)
-        let currentWeekdayInt = setFirstDayOfTheWeek(calendar, &weekdayInt)
+        let secondsInADay: TimeInterval = 24 * 60 * 60 // 24 hours * 60 minutes * 60 seconds
+
+        let twoDaysFromNow = today.addingTimeInterval(2 * secondsInADay)
         
-        let currentDayOfTheWeek = "08/02/2023" // quarta-feira
-        
+        // Define um DateFormatter para formatar as datas como string
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         
-        /*
-         se um dos dias selecionados pelo usuario for menor que esse esse cara (startDate),
-         significa que o dia do habito extrapola a semana e seu status deve ser toBeCompleted
-         (exemplo: hoje quarta feira, criei um habito que inclui segunda e terça, logo,
-         segunda e terça tem que começar com toBeCompleted e não failed.
-         */
-         
-        guard let startDateFormatted = dateFormatter.date(from: currentDayOfTheWeek) else {
-            print("string couldnt be converted to a date")
-            return
-        }
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 2
         
-        // start date precisa ser convetido para que segunda seja 1 e domingo 7
-        var startDate = Calendar.current.component(.weekday, from: startDateFormatted)
-        let currentStartDate = setFirstDayOfTheWeek(calendar, &startDate)
-        
-        // weekDays = base pra ser comparada
-        for day in weekDays {
-            // dias escolhidos
-            if model.daysOfTheWeek.keys.contains(day) {
-                if let dayChosenByUserToInt = DaysOfTheWeek.convertDayToInt(rawValue: day) {
-                    if dayChosenByUserToInt < currentStartDate {
-                        chosenDays.append(HabitProgressState.toBeCompleted.rawValue)
+        for day in weekDaysDateComponents {
+            if model.daysOfTheWeek.contains(day) {
+                if let dateChosenByUser = calendar.nextDate(after: today, matching: day, matchingPolicy: .nextTime) {
+                    
+                    let dayChosenByUser = calendar.component(.day, from: dateChosenByUser)
+                    let todayDate = calendar.component(.day, from: twoDaysFromNow)
+
+                    /// working
+                    if dayChosenByUser == todayDate && !model.markAsCompleted.contains(day) {
+                        // DATA ATUAL; HABITO NÃO CONCLUIDO
+                        chosenDays.append(HabitProgressState.inProgress.rawValue)
+                    } else if dayChosenByUser < todayDate && !model.markAsCompleted.contains(day) {
+                        // DATA PASSOU; HABITO NÃO CONCLUIDO
+                        chosenDays.append(HabitProgressState.failed.rawValue)
+                    } else if dayChosenByUser <= todayDate && model.markAsCompleted.contains(day) {
+                        // DATA AINDA NÃO PASSOU; HABITO FOI CONCLUIDO
+                        chosenDays.append(HabitProgressState.completed.rawValue)
                     } else {
-                        // failed: passou de hoje e não foi concluído
-                        if dayChosenByUserToInt < currentWeekdayInt && !model.markAsCompleted.contains(day) {
-                            chosenDays.append(HabitProgressState.failed.rawValue)
-                            // in progress: está no prazo e ainda não foi concluido
-                        } else if dayChosenByUserToInt == currentWeekdayInt && !model.markAsCompleted.contains(day) {
-                            chosenDays.append(HabitProgressState.inProgress.rawValue)
-                            // completed: está no prazo e foi concluido
-                        } else if dayChosenByUserToInt <= currentWeekdayInt && model.markAsCompleted.contains(day) {
-                            chosenDays.append(HabitProgressState.completed.rawValue)
-                        } else {
-                            chosenDays.append(HabitProgressState.toBeCompleted.rawValue)
-                        }
+                        // TO BE COMPLETED
+                        chosenDays.append(HabitProgressState.toBeCompleted.rawValue)
                     }
                 }
             } else {
-                // dias não escolhidos pelo usuario
                 chosenDays.append(HabitProgressState.notChosenByUser.rawValue)
             }
         }
+        
+        // basicamente isso faz com que o primeiro elemento da array seja segunda-feira e o último seja domingo
+        let firstElement = chosenDays.removeFirst()
+        chosenDays.append(firstElement)
     }
 }
 

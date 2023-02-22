@@ -17,7 +17,6 @@ class WeekDaysCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var weekDayLabel: UILabel!
-    @IBOutlet weak var checkmarkImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,7 +26,6 @@ class WeekDaysCollectionViewCell: UICollectionViewCell {
     }
     
     private func configCell() {
-        checkmarkImageView.isHidden = true
         weekDayLabel.textAlignment = .center
         stackView.layer.cornerRadius = 25
         stackView.clipsToBounds = true

@@ -21,14 +21,8 @@ final class HomeViewModel {
     }
     
     private(set) var weeklyHabits: [DuringWeekHabitsModel] = [.init(title: "Finalizar meu projeto",
-                                                                    daysOfTheWeek: ["SEG": "Segunda",
-                                                                                    "TER": "Terça",
-                                                                                    "QUA": "Quarta",
-                                                                                    "QUI": "Quinta",
-                                                                                    "SEX": "Sexta",
-                                                                                    "SÁB": "Sábado",
-                                                                                    "DOM": "Domingo"],
-                                                                    markAsCompleted: ["QUA"])]
+                                                                    daysOfTheWeek: [DateComponents(weekday: 1), DateComponents(weekday: 2), DateComponents(weekday: 3), DateComponents(weekday: 4), DateComponents(weekday: 5), DateComponents(weekday: 6)],
+                                                                    markAsCompleted: [DateComponents(weekday: 4)])]
     
     private(set) var isTodaysHabitEmtpy: Bool = false
     
@@ -41,47 +35,47 @@ final class HomeViewModel {
     }
     
     func fetchTodaysHabit() {
-        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").getDocuments { [weak self] snapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                if let snapshot {
-                    for document in snapshot.documents {
-                        let data = document.data()
-                        
-                        if let exerciseName = data["name"] as? String,
-                           let desc = data["description"] as? String,
-                           let habitImage = data["habitImage"] as? String {
-                            let todayHabit = TodaysHabitModel(title: exerciseName, description: desc, image: habitImage)
-                            self?.todaysHabit.append(todayHabit)
-                            self?.onSuccessfulFetch?()
-                        }
-                    }
-                }
-            }
-        }
+//        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").getDocuments { [weak self] snapshot, error in
+//            if let error = error {
+//                print("Error getting documents: \(error)")
+//            } else {
+//                if let snapshot {
+//                    for document in snapshot.documents {
+//                        let data = document.data()
+//
+//                        if let exerciseName = data["name"] as? String,
+//                           let desc = data["description"] as? String,
+//                           let habitImage = data["habitImage"] as? String {
+//                            let todayHabit = TodaysHabitModel(title: exerciseName, description: desc, image: habitImage)
+//                            self?.todaysHabit.append(todayHabit)
+//                            self?.onSuccessfulFetch?()
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
     
     func fetchWeeklyHabits() {
-        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").getDocuments { [weak self] snapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                if let snapshot {
-                    for document in snapshot.documents {
-                        let data = document.data()
-                        
-                        if let habitName = data["name"] as? String,
-                           let daysOfTheWeek = data["daysOfTheWeek"] as? [String : String],
-                           let markAsCompleted = data["markAsCompleted"] as? [String] {
-                            let weeklyHabits = DuringWeekHabitsModel(title: habitName, daysOfTheWeek: daysOfTheWeek, markAsCompleted: markAsCompleted)
-                            self?.weeklyHabits.append(weeklyHabits)
-                            self?.onSuccessfulFetch?()
-                        }
-                    }
-                }
-            }
-        }
+//        db.collection("users").document("rAQfrqv6deZUmbMTau6YULZGCJc2").collection("habits").getDocuments { [weak self] snapshot, error in
+//            if let error = error {
+//                print("Error getting documents: \(error)")
+//            } else {
+//                if let snapshot {
+//                    for document in snapshot.documents {
+//                        let data = document.data()
+//
+//                        if let habitName = data["name"] as? String,
+//                           let daysOfTheWeek = data["daysOfTheWeek"] as? [String : String],
+//                           let markAsCompleted = data["markAsCompleted"] as? [String] {
+//                            let weeklyHabits = DuringWeekHabitsModel(title: habitName, daysOfTheWeek: daysOfTheWeek, markAsCompleted: markAsCompleted)
+//                            self?.weeklyHabits.append(weeklyHabits)
+//                            self?.onSuccessfulFetch?()
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
     
     func checkIfTodaysHabitIsEmpty() {
